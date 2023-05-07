@@ -31,7 +31,7 @@
 
 ---
 
-<!---------------------Type inference in TypeScript----------------------------->
+<!--------------------- Type inference in TypeScript----------------------------->
 
 ## 1. Type inference in TypeScript
 
