@@ -1,0 +1,41 @@
+html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+}
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+h4 {
+    font-size: 1.1rem;
+}
+
+.history{
+    background-color: antiquewhite;
+}
+
+#ulsquare {
+    list-style: square;
+    font-size: larger;
+}
+
+a:hover {
+    background-color: yellow;
+}
+
+
+
+/*hover	User is hovering their cursor over an item
+visited	A link that has been previously clicked
+link	An unvisited link
+first-child	The first child matching the selector in a hierarchy
+last-child	The last child matching the selector in a hierarchy
+*/
