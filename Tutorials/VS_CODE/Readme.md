@@ -293,5 +293,13 @@ this a more elaborated list of TS compiler otpions
 [&#9650;](#top)
 To install an npm Package:
 - Open a **teminal**
-- Run the following npm commande: ```npm uninstall -g package-name``` 
+- Run the following npm commande: ```npm uninstall -g package-name```
+
+# VSCode - Main Shortcuts
+
+|Function|Shortcut|Standard|Comment|
+|-|-|-|-|
+|Comment|Ctl K + Ctl C|Yes||
+|Uncomment|Ctl K + Ctl U|Yes||
+|Format Code|Ctl K + Ctl F|Yes|Javascript / C#|
 

@@ -1,0 +1,96 @@
+# **Async and Promises**
+
+- [**Async and Promises**](#async-and-promises)
+  - [Use Async](#use-async)
+  - [Use Promises](#use-promises)
+  
+<!---------------------Variables Declaration----------------------------->
+
+---
+
+## Use Async
+
+[&#9650;](#async-and-promises)
+
+```js
+function promiseTimeout(ms) {
+  return new Promise((resolve, reject) => {
+      console.log('Processing promiseTimeout()')
+      setTimeout(resolve, ms);
+  });
+}
+
+async function longRunningOperation() {
+  // logic
+  console.log('Processing longRunningOperation()')
+  await new Promise(r => setTimeout(r, 2000));
+  return 42;
+}
+
+async function run() {
+  // logic
+  console.log('Start!!')
+  await promiseTimeout(2000);
+
+  const response = await longRunningOperation();
+  console.log(response);
+
+  console.log('Stop!!');
+}
+
+run();
+```
+
+**Output:**
+
+```text
+Start!!
+Processing promiseTimeout()         =>timer 1 started
+Processing longRunningOperation()   =>reached after 2sec + timer 2 started
+42                                  =>reached after 2sec
+Stop!!
+```
+
+## Use Promises
+
+[&#9650;](#async-and-promises)
+
+```js
+function promiseTimeout(ms) {
+  return new Promise((resolve, reject) => {
+    console.log('Initiating timeOut... ', ms, 'ms');
+    setTimeout(resolve, ms);
+  });
+}
+
+promiseTimeout(3000)
+  .then(() => {
+    console.log('then 1 started!!');
+    return promiseTimeout(2000);
+  }).then(() => {
+    console.log('then 2 started - not timeOut!!');
+    return Promise.resolve(42);
+  }).then((result) => {
+    console.log('then 3 started!! printing result from previous resove ' + result);
+  }).then(() => {
+    console.log('then 4 forcing Error');
+    promiseTimeout(1000);
+    const obj = { a: 3 };
+    obj = { b: 5 } // not allowed
+  }).catch(() => {
+    console.log('Error!');
+  });
+```
+
+**Output:**
+
+```text
+Initiating timeOut...  3000 ms
+then 1 started!!
+Initiating timeOut...  2000 ms
+then 2 started - not timeOut!!
+then 3 started!! printing result from previous resove 42
+then 4 forcing Error
+Initiating timeOut...  1000 ms
+Error!
+```

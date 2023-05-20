@@ -121,7 +121,7 @@ console.log(groupedStudent)
 
 Output:
 
-```js
+```text
 {
   fishing: [
     { name: 'David', age: 23, hobby: 'fishing' },
@@ -148,7 +148,7 @@ console.log(newArray)
 
 Output:
 
-```js
+```text
 [
   2, 5, 7, 12,
   9, 4, 3, 15

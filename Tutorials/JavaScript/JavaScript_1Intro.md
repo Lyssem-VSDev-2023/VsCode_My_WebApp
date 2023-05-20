@@ -95,7 +95,7 @@ console.log(num1 / 1500);
 
 Output
 
-```js
+```text
 ********Basic Math********
 125
 0
@@ -115,7 +115,7 @@ console.log(--num1); //Decrement
 
 Output
 
-```js
+```text
 ********Additional Mathematical Operations********
 100
 101
@@ -133,7 +133,7 @@ console.log(Math.sqrt(num1)); //Square root
 
 Output
 
-```js
+```text
 ********Using the Math Object********
 3.141592653589793
 10
@@ -161,7 +161,7 @@ console.log(parseInt('0xF')); //Hexadecimal number
 
 Output
 
-```js
+```text
 ********Converting strings to integers********
 100
 150
@@ -181,7 +181,7 @@ console.log(parseFloat('ABC'));
 
 Output
 
-```js
+```text
 ********Converting strings to float********
 1
 1.5
@@ -202,7 +202,7 @@ console.log(parseInt(`${1 + 1}`));
 
 Output:
 
-```js
+```text
 ********More Conversion Examples********
 1
 1
@@ -221,7 +221,7 @@ console.log((100).toString());
 
 Output
 
-```js
+```text
 ********Converting numbers to strings********
 150
 1.50
@@ -297,7 +297,7 @@ console.log(`Date: ${demoDate.getDate()}`);
 
 Output
 
-```js
+```text
 2023-05-08T13:30:58.750Z
 1995-08-23T23:00:00.000Z
 2023-01-08T13:30:58.755Z

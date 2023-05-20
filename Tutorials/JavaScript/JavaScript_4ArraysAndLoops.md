@@ -100,7 +100,7 @@ console.log(arr1);
 
 Output
 
-```js
+```text
 ********Push and pop********
 4
 [ 'A', true, 2, 'new value' ]
@@ -121,7 +121,7 @@ console.log(arr1);
 
 Output:
 
-```js
+```text
 ********Shift and unshift********
 4
 [ 'new value', 'A', true, 2 ]
