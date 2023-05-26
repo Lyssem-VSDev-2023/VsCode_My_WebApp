@@ -302,4 +302,8 @@ To install an npm Package:
 |Comment|Ctl K + Ctl C|Yes||
 |Uncomment|Ctl K + Ctl U|Yes||
 |Format Code|Ctl K + Ctl F|Yes|Javascript / C#|
+|Inline Code|Ctl M + Ctl I|MardonwIt|MarkDown|
+|Block Code|Ctl M + Ctl C|MardonwIt|MarkDown|
+|Indent Line|Ctl I + Ctl I|Manual|All|
+|Outdent Line|Ctl O + Ctl O|Manual|All|
 

@@ -1,6 +1,14 @@
 {
   "dependencies": {
+    "dotenv": "^16.0.3",
     "gulp": "^4.0.2",
-    "gulp-markdown-it": "^0.1.1"
+    "gulp-markdown-it": "^0.1.1",
+    "lodash": "^4.17.21",
+    "node-fetch": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^20.2.4",
+    "jest": "^29.5.0"
   }
 }

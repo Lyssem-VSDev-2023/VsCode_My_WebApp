@@ -1,0 +1,556 @@
+# **Variables and Types in TypeScript**
+
+- [**Variables and Types in TypeScript**](#variables-and-types-in-typescript)
+  - [Type inference in TypeScript](#type-inference-in-typescript)
+    - [TypeScript features](#typescript-features)
+    - [Variables Declaration](#variables-declaration)
+    - [Types and subtypes](#types-and-subtypes)
+  - [Primitive types](#primitive-types)
+    - [Booleans](#booleans)
+    - [Number and BigInteger](#number-and-biginteger)
+    - [Strings](#strings)
+    - [enums](#enums)
+  - [Any and unknown types](#any-and-unknown-types)
+    - [Any type](#any-type)
+    - [Unknown type](#unknown-type)
+    - [Type assertion](#type-assertion)
+    - [Type guards](#type-guards)
+  - [Union and intersection](#union-and-intersection)
+    - [Union types](#union-types)
+    - [Intersection types](#intersection-types)
+  - [Literal types](#literal-types)
+    - [literals narrowing](#literals-narrowing)
+  - [Collection types](#collection-types)
+    - [Arrays](#arrays)
+    - [Tuples](#tuples)
+  - [Exercise: Types assignment](#exercise-types-assignment)
+  - [Exercise: Maths](#exercise-maths)
+  - [Exercise: Enum](#exercise-enum)
+  - [Exercise: Arrays](#exercise-arrays)
+
+---
+
+<!--------------------- Type inference in TypeScript----------------------------->
+
+## Type inference in TypeScript
+
+[&#9650;](#variables-and-types-in-typescript)
+
+### TypeScript features
+
+- Interfaces
+- Namespaces
+- Generics
+- Abstract classes
+- Data modifiers
+- Optionals
+- Function overloading
+- Decorators
+- Type utils
+- readonly keyword
+
+### Variables Declaration
+
+Declare explicit types with annotation (optional)
+
+```ts
+let myVariable: number
+let myVariable: number = 10
+let myVariable = 10
+```
+
+Exmaples
+
+```ts
+let x: number;        //* Explicitly declares x as a number type
+let x: number = 10;   //* Explicitly declares x as a number type and assign it
+let y = 1;            //* Implicitly declares y as a number type
+let z;                //* Declares z without initializing it, can accept any type assigned to it
+```
+
+### Types and subtypes
+
+- any
+  - Primitive Types
+    - boolean
+    - number
+    - string
+    - undefined *(cannot be referenced)*
+    - null *(cannot be referenced)*
+    - void *(Indicate that nothing is returned)*
+    - enum *(user defined)*
+  - Object Types
+    - class
+    - interface
+    - array
+    - literals
+  - Parameter Types
+
+<!---------------------Primitive types----------------------------->
+
+## Primitive types
+
+[&#9650;](#variables-and-types-in-typescript)
+
+### Booleans
+
+```ts
+let flag: boolean;
+let yes = true;
+let no = false;
+```
+
+### Number and BigInteger
+
+```ts
+let x: number;
+let y = 0;
+let z: number = 123.456;
+let big: bigint = 100n;
+```
+
+### Strings
+
+```ts
+let s: string;
+let empty = "";
+let abc = 'abc';
+```
+
+```ts
+let firstName: string = "Lyes";
+let sentence: string = `My name is ${firstName}.
+    I am new to TypeScript.`;
+console.log(sentence);
+```
+
+### enums
+
+```ts
+enum ContractStatus {
+     Permanent,
+     Temp,
+     Apprentice
+}
+let employeeStatus: ContractStatus = ContractStatus.Temp;
+console.log(employeeStatus);
+```
+
+**output: ```1```**
+
+By default, enum index strats at **0**, but we can alter that as follows
+
+```ts
+enum ContractStatus {
+     Permanent = 1,
+     Temp,
+     Apprentice
+}
+let employeeStatus: ContractStatus = ContractStatus.Temp;
+console.log(employeeStatus);
+```
+
+**output: ```2```**
+
+<!---------------------Any and unknown types----------------------------->
+
+## Any and unknown types
+
+[&#9650;](#variables-and-types-in-typescript)
+
+### Any type
+
+Can represent any type, usefull when expecting a return value from a 3rd party library
+
+```ts
+let randomValue: any = 10;
+randomValue = 'Mateo';   // OK
+randomValue = true;      // OK
+
+console.log(randomValue.name);  // Logs "undefined" to the console
+randomValue();                  // Returns "randomValue is not a function" error
+randomValue.toUpperCase();      // Returns "randomValue is not a function" error
+```
+
+### Unknown type
+
+Can represent any type, usefull when expecting a return value from a 3rd party library
+
+```ts
+let randomValue: unknown = 10;
+randomValue = true;
+randomValue = 'Mateo';
+
+console.log(randomValue.name);  // Error: Object is of type unknown
+randomValue();                  // Error: Object is of type unknown
+randomValue.toUpperCase();      // Error: Object is of type unknown
+```
+
+### Type assertion
+
+- Basically perfrom special checks before calling the statement  
+
+For Example:
+
+```ts
+(randomValue as string).toUpperCase();
+(<string>randomValue).toUpperCase();
+
+// the complete example:
+
+let randomValue: unknown = 10;
+
+randomValue = true;
+randomValue = 'Mateo';
+
+if (typeof randomValue === "string") {
+    console.log((randomValue as string).toUpperCase());    //* Returns MATEO to the console.
+} else {
+    console.log("Error - A string was expected here.");    //* Returns an error message.
+}
+
+```
+
+### Type guards
+
+|Type|Predicate|
+|-|-|
+|string|typeof s === "string"|
+|number|typeof n === "number"|
+|boolean|typeof b === "boolean"|
+|undefined|typeof undefined === "undefined"|
+|function|typeof f === "function"|
+|array|Array.isArray(a)|
+
+<!---------------------Union and intersection----------------------------->
+
+## Union and intersection
+
+[&#9650;](#variables-and-types-in-typescript)
+
+### Union types
+
+- Describes a value that can be one of several types, usefull when values are returned from an API or 3PP library.
+- While **```any```** type has no restrictions, **```union```** type restricts the specified types.
+
+```ts
+let multiType: number | boolean;
+multiType = 20;         //* Valid
+multiType = true;       //* Valid
+multiType = "twenty";   //* Invalid
+```
+
+```ts
+function add(x: number | string, y: number | string) {
+    if (typeof x === 'number' && typeof y === 'number') {
+        return x + y;
+    }
+    if (typeof x === 'string' && typeof y === 'string') {
+        return x.concat(y);
+    }
+    throw new Error('Parameters must be numbers or strings');
+}
+console.log(add('one', 'two'));  //* Returns "onetwo"
+console.log(add(1, 2));          //* Returns 3
+console.log(add('one', 2));      //* Returns error
+```
+
+### Intersection types
+
+- `Intersection` types are similar to `union` types, but they rather allow to group the properties of the declared types.
+- `Intersection` are usualy used with interfaces  
+
+```ts
+interface Employee {
+  employeeID: number;
+  age: number;
+}
+interface Manager {
+  stockPlan: boolean;
+}
+type ManagementEmployee = Employee & Manager;
+let newManager: ManagementEmployee = {
+    employeeID: 12345,
+    age: 34,
+    stockPlan: true
+};
+```
+<!---------------------Literal types----------------------------->
+
+## Literal types
+
+[&#9650;](#variables-and-types-in-typescript)
+
+- A literal is a more specific subtype of a collective type
+- The types of literals are: `string`, `number`, and `boolean`.
+
+### literals narrowing
+
+- `var` or `let` when used to declar a type, the possibilties are undelimited within the specied type
+- `const` is however restrictive to a unique value of the specied type
+- The process of going from a large number of possibilities to limited possible values is called **narrowing**
+- Literal types are written as object, array, function, or constructor type literals and are used to compose new types from other types.
+
+```ts
+type testResult = "pass" | "fail" | "incomplete";
+let myResult: testResult;
+myResult = "incomplete";    //* Valid
+myResult = "pass";          //* Valid
+myResult = "failure";     
+```
+
+```ts
+type dice = 1 | 2 | 3 | 4 | 5 | 6;
+let diceRoll: dice;
+diceRoll = 1;    //* Valid
+diceRoll = 2;    //* Valid
+diceRoll = 7;    //* Invalid
+
+```
+
+<!---------------------Collection types----------------------------->
+
+## Collection types
+
+[&#9650;](#variables-and-types-in-typescript)
+
+- A literal is a more specific subtype of a collective type
+- The types of literals are: `string`, `number`, and `boolean`.
+
+### Arrays
+
+- could be declared in two ways
+
+```ts
+let list: number[] = [1, 2, 3];
+```
+
+```ts
+let list: Array<number> = [1, 2, 3];
+```
+
+### Tuples
+
+- Array that contains values of mixed types.
+
+```ts
+let person1: [string, number] = ['Marcia', 35];
+let person1: [string, number] = ['Marcia', 35, true]; // throws an error
+let person1: [string, number] = [35, 'Marcia']; // throws an error
+```
+
+## Exercise: Types assignment
+
+Modify the javascript code to add types to the variable declarations, and create a TypeScript Code.  
+
+**Original Javascript**:
+
+```js
+let firstName;
+let lastName;
+let fullName;
+let age;
+let ukCitizen;
+
+firstName = 'Rebecca';
+lastName = 'Smith';
+age = 42;
+ukCitizen = false;
+fullName = firstname + " " + lastname;
+
+if (ukCitizen) {
+    console.log("My name is " + fullName + ", I'm " + age + ", and I'm a citizen of the United Kingdom.");
+} else {
+    console.log("My name is " + fullName + ", I'm " + age + ", and I'm not a citizen of the United Kingdom.");
+}
+```
+
+**Converted to TypeScript**:
+
+```ts
+let firstName: string;
+let lastName: string;
+let fullName: string;
+let age: number;
+let ukCitizen: boolean;
+
+firstName = 'Rebecca';
+lastName = 'Smith';
+age = 42;
+ukCitizen = false;
+fullName = firstName + " " + lastName;
+
+if (ukCitizen) {
+    console.log("My name is " + fullName + ", I'm " + age + ", and I'm a citizen of the United Kingdom.");
+} else {
+    console.log("My name is " + fullName + ", I'm " + age + ", and I'm not a citizen of the United Kingdom.");
+}
+```
+
+**Output**:
+
+`My name is Rebecca Smith, I'm 42, and I'm not a citizen of the United Kingdom.`
+
+## Exercise: Maths
+
+[&#9650;](#variables-and-types-in-typescript)
+
+You can use types to ensure operation outcomes. Run the code as is and then modify
+it to have strongly typed variables. Then, address any errors you find so that the result returned to a is 12  
+
+**Original Javascript**:
+
+```js
+let x;
+let y;
+let a;
+
+x = 'five';
+y = 7;
+a = x + y;
+
+console.log(a);
+```
+
+**Output**:
+
+`five7`
+
+**Converted to TypeScript**:
+
+```ts
+let x: number;
+let y: number;
+let a: number;
+
+x = 5;
+y = 7;
+a = x + y;
+
+console.log(a);
+```
+
+**Output**:
+
+`12`
+
+## Exercise: Enum
+
+[&#9650;](#variables-and-types-in-typescript)
+
+In the following code, implement an enum type called Season that represents
+the constants "Fall", "Winter", "Spring", and "Summer".  
+Then, update the function so you can pass in the season by referencing an item in the enum, for example Season.Fall, instead of the literal string "Fall".
+
+**Original Javascript**:
+
+```js
+function whichMonths(season) {
+
+    let monthsInSeason;
+
+    switch (season) {
+        case "Fall":
+            monthsInSeason = "September to November";
+            break;
+        case "Winter":
+            monthsInSeason = "December to February";
+            break;
+        case "Spring":
+            monthsInSeason = "March to May";
+            break;
+        case "Summer":
+            monthsInSeason = "June to August";
+    }
+
+    return monthsInSeason;
+}
+
+console.log(whichMonths("Fall"));
+```
+
+**Output**:
+
+`September to November`
+
+**Converted to TypeScript**:
+
+```ts
+enum Season {
+    Winter,
+    Spring,
+    Summer,
+    Fall
+};
+
+function whichMonths(season: Season) {
+    let monthsInSeason: string;
+    switch (season) {
+        case Season.Fall:
+            monthsInSeason = "September to November";
+            break;
+        case Season.Winter:
+            monthsInSeason = "December to February";
+            break;
+        case Season.Spring:
+            monthsInSeason = "March to May";
+            break;
+        case Season.Summer:
+            monthsInSeason = "June to August";
+    }
+    return monthsInSeason;
+}
+
+console.log(whichMonths(Season.Spring));
+```
+
+**Output**:
+
+`March to May`
+
+## Exercise: Arrays
+
+[&#9650;](#variables-and-types-in-typescript)
+
+Declare the array as the type to match the type of the items in the array.
+
+**Original Javascript**:
+
+```js
+let randomNumbers;
+let nextNumber;
+   
+for (let i = 0; i < 10; i++) {
+  nextNumber = Math.floor(Math.random() * (100 - 1)) + 1;
+  randomNumbers.push(nextNumber);
+}
+   
+console.log(randomNumbers);
+```
+
+**Output**:
+
+`Error as no Array is declared`
+
+**Converted to TypeScript**:
+
+```ts
+let randomNumbers: number[] = [];
+let nextNumber: number;
+
+for (let i = 0; i < 10; i++) {
+    nextNumber = Math.floor(Math.random() * (100 - 1)) + 1;
+    randomNumbers.push(nextNumber);
+}
+
+console.log(randomNumbers);
+```
+
+**Output**:
+
+```text
+[
+  76, 41,  2, 43, 42,
+  54, 15, 85,  8, 95
+]
+```

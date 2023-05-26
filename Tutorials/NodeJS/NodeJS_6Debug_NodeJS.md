@@ -1,0 +1,574 @@
+# **Debug Node.js apps with VSCode**
+
+- [**Debug Node.js apps with VSCode**](#debug-nodejs-apps-with-vscode)
+  - [debug Node.js apps](#debug-nodejs-apps)
+  - [Debug with the Node.js built-in debugger](#debug-with-the-nodejs-built-in-debugger)
+    - [Breakpoints](#breakpoints)
+    - [Node.js inspect mode](#nodejs-inspect-mode)
+  - [Timeout error from node inspect](#timeout-error-from-node-inspect)
+  - [Built-in debugger](#built-in-debugger)
+  - [Exercise - Use the Node.js built-in debugger](#exercise---use-the-nodejs-built-in-debugger)
+    - [Start built-in debugger](#start-built-in-debugger)
+    - [Locate the bug with breakpoints](#locate-the-bug-with-breakpoints)
+  - [Debug with Visual Studio Code](#debug-with-visual-studio-code)
+    - [Add breakpoints](#add-breakpoints)
+    - [Visual Studio Code debugger overview](#visual-studio-code-debugger-overview)
+    - [Debugger launch controls](#debugger-launch-controls)
+    - [View and edit your variables state](#view-and-edit-your-variables-state)
+    - [Watch variables](#watch-variables)
+    - [Call stack](#call-stack)
+    - [View loaded script files](#view-loaded-script-files)
+    - [Breakpoints panel](#breakpoints-panel)
+    - [Control execution](#control-execution)
+    - [Use the debug console](#use-the-debug-console)
+    - [Add logpoints](#add-logpoints)
+  - [Exercise: Debud using launch configuration (launch.json)](#exercise-debud-using-launch-configuration-launchjson)
+
+---
+
+## debug Node.js apps
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+- Running your code through a debugger, to avoid guessing what's happening in your program
+
+- A debugger allow  you to watch your program running, by following your program execution one line of code at a time
+
+- Control of your program execution. You can pause your program and run it step by step, which allows you to see which code is executed and how it affects your program's state.
+
+- Observation of your program's state. For example, you can look at your variables' value and function parameters at any point during your code execution.
+
+- we'll use both the built-in command-line debugger that comes with Node.js, and the integrated graphical debugger of Visual Studio Code
+
+- Debugging is a multistage process that usually follows these steps:
+
+  - **Identify a bug in your program.**
+  - **Find where the bug is located in your code.**
+  - **Analyze why the bug occurs.**
+  - **Fix the bug.**
+  - **Validate that your fix works.**
+
+## Debug with the Node.js built-in debugger
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+### Breakpoints
+
+- Running through all your code step by step might be extremely inefficient if your program has thousands of lines of code.
+- Using breakpoints, you can make your program run normally up until you reach the critical portion of code where you suspect the error is located. Then you can switch to running step by step.
+- To force any JavaScript `debugger` to pause at a given point. You use the debugger statement.
+
+```js
+function addToBasket(product) {
+    // Use "debugger" statement to pause at start of this function
+    debugger;
+  
+    const basket = getCurrentBasket();
+    basket.add(product);
+  }
+```
+
+### Node.js inspect mode
+
+- Because a debugger has **full access** to the execution environment, **a malicious actor** could also use it to inject arbitrary code in your `Node.js` process. That's why, **by default**, `Node.js` **doesn't allow** you to debug a running program. You have to **enable a special mode** called **`inspector`** mode to allow debugging.
+
+- You need the **`--inspect`** option to allow a Node.js process to listen for a debugger client that will attach itself to the process, and take control of your program execution.
+
+- By default, when `Node.js` is started with the `--inspect` option, it will listen on host **`127.0.0.1`** on port **`9229`**. You can also **specify a custom** host and port by using the syntax **`--inspect=<HOST>:<PORT>`**.
+
+- **Important:** Avoid binding the `Node.js` debugger port to a **`public IP address`** or to **`0.0.0.0`**. Otherwise, any clients that can connect to your IP address could potentially connect and control your `Node.js` process. By doing so, an attacker can remotely run arbitrary code on your execution environment. This action could lead to a potentially severe security breach.
+
+- As an alternative, you can use the **`--inspect-brk`** option. It works the same as `--inspect`, but it breaks code execution just before the start of your code.
+
+- After `Node.js` is started with **inspect mode enabled**, you can use any compatible debugger clients to connect to your `Node.js` process.
+
+## Timeout error from node inspect
+
+If the `node inspect` or `node --inspect` command returns a `timeout error`, you can try to install the inspect mode **globally** for your system to resolve the issue. For installation options, see [How to install Node.js]([https://nodejs.dev/en/learn/how-much-javascript-do-you-need-to-know-to-use-nodejs/)
+
+## Built-in debugger
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+you can use **`node-inspect`**. This command-line debugger comes bundled with `Node.js`. You can use it by running your program like this:
+
+```text
+node inspect <YOUR_SCRIPT>.js
+```
+
+The node-inspect debugger will run `Node.js` with **inspect mode enabled**, and launch at the same time as the integrated **interactive debugger**. It will pause execution just before your code starts.
+
+```text
+node inspect myscript.js
+< Debugger listening on ws://127.0.0.1:9229/ce3689fa-4433-41ee-9d5d-98b5bc5dfa27
+< For help, see: https://nodejs.org/en/docs/inspector
+< Debugger attached.
+Break on start in myscript.js:1
+> 1 const express = require('express');
+  2
+  3 const app = express();
+debug>
+```
+
+You can now use one of the **multiple commands** to control the execution of your program:
+
+|Command|Description|
+|-|-|
+|`cont` or `c` => **Continue**|Continues the execution until the next breakpoint or the end of your program|
+|`next` or `n` => **Step next**|Executes the next line of code in the current context|
+|`step` or `s` => **Step in**|Same as next, except that if the next line of code is a function call, go to the first line of this function's code.|
+|`out` or `o` => **Step out**|If the current execution context is inside the code of a function, execute the remaining code of this function and jump back to the line of code where this function was initially called.|
+|`restart` or `r` => **Restart**|Restarts the program and pauses the execution before the start of your code.|
+
+To set or clear breakpoints in your code, use the following commands:
+
+|Command|Description|
+|-|-|
+|`setBreakpoint()` or `sb()`|Add a breakpoint on the current line.|
+|`setBreakpoint(<N>)` or `sb(<N>)`|Add a breakpoint on line number N.|
+|`clearBreakpoint('myscript.js', <N>)` or `cb('myscript.js', <N>)`|Clear the breakpoint in the file myscript.js on line number N.|
+
+To get information about the current execution point, run these commands:
+
+|Command|Description|
+|-|-|
+|`list(<N>)`| List your source code with N lines before and after the current execution point.|
+|`exec <EXPR>`|Evaluate an expression within the current execution context. This command is useful to help you get information about the current state. For example, you can get the value of a variable named i by using exec i.|
+
+To exit the debugger at any time:
+
+|Command|
+|-|
+|press `Ctrl+D`|
+|command `.exit`|
+
+## Exercise - Use the Node.js built-in debugger
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+**`PS:`**  
+Refer to the following folder for the exercise files:
+
+> **exercise4_DebunNodeJS_1**
+
+### Start built-in debugger
+
+Create the **`fibonacci.js`**
+
+```js
+function fibonacci(n) {
+    let n1 = 0;
+    let n2 = 1;
+    let sum = 0;
+  
+    for (let i = 2; i < n; i++) {
+      sum = n1 + n2;
+      n1 = n2;
+      n2 = sum;
+    }
+  
+    return n === 0 ? n1 : n2;
+  }
+  
+  const result = fibonacci(5);
+  console.log(result);
+```
+
+Run the NodeJS Debugger:
+
+```text
+node inspect fibonacci.js
+```
+
+We should see:
+
+```text
+break in fibonacci.js:2
+  1 function fibonacci(n) {
+> 2   let n1 = 0;
+  3   let n2 = 1;
+  4   let sum = 0;
+debug>
+```
+
+To check the value of **`n`**, we should get the result of **`5`**
+
+```text
+exec n
+```
+
+To step into the code, press **`s`**
+
+### Locate the bug with breakpoints
+
+when the execution reaches the `for` loop, type **`sb()`**, then **`c`** to stop each time the breakpoint is reached.
+
+## Debug with Visual Studio Code
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+In Visual Studio Code, select the Run tab to access the debugger tool.
+
+![Debud in Visual Studio](/Tutorials/NodeJS/Images/DebugVsCode.png)
+
+If you have a Node.js project open, you have three different ways to activate the debugger:
+
+- If you have a .js file open in the editor window, select **Run and Debug**. Then, select **`Node.js`** to directly debug this JavaScript file.
+
+- You can also choose to open a **Node.js debug terminal**. Selecting this button opens **a special terminal** window where you can run your program from the command line. For example, you can enter the command **`node myscript.js`** in the terminal, and your app will start with the debugger enabled automatically. You **won't have to** use the **`--inspect`** option.
+
+- You can select create a **`launch.json`** file to further customize your run configuration, and share it with your coworkers. We'll review this option later.
+
+### Add breakpoints
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+- To add a breakpoint in your code, find the line of code in your JavaScript (.js) file where you want to add a break. Next to the line number for the code statement, click in the left margin. When the breakpoint is added, you'll see a red circle next to the line number. To remove the breakpoint, click the red circle.
+
+- You can also use the right-click context menu to add a breakpoint. The content menu includes the **Add Conditional Breakpoint** option, where you enter a condition for breaking the code execution. A conditional breakpoint is only active when the specified condition is met.
+
+### Visual Studio Code debugger overview
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+![Debud in Visual Studio](/Tutorials/NodeJS/Images/DebugVsCodeDetails.png)
+
+1. Debugger launch controls
+1. Variables state
+1. Watched variables state
+1. Current call stack
+1. Loaded script files
+1. Call stack
+1. Execution controls
+1. Current execution step
+1. Debug console
+
+### Debugger launch controls
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+1. Start debugging.
+1. Select the active launch configuration.
+1. Edit the launch.json file. Create the json file if you need to.
+1. Open the Debug Console, and toggle visibility of the Variables, Watch, Call Stack, and Breakpoints panels.
+
+![Debud in Visual Studio](/Tutorials/NodeJS/Images/DebugVsCodeDetails1.png)
+
+### View and edit your variables state
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+Your variables are shown organized by scope:
+
+- **Local variables** are accessible in the current scope, usually the current function.
+- **Global variables** are accessible from everywhere in your program. System objects from the JavaScript runtime are also included, so don't be surprised if you see a lot of stuff in there.
+- **Closure variables** are accessible from the current closure, if any. A closure combines the **local scope of a function** with the scope from **the outer function** it belongs to.
+
+![Debud in Visual Studio](/Tutorials/NodeJS/Images/DebugVsCodeDetails2.png)
+
+Also:
+
+- You can unfold scopes and variables by selecting the arrow. When you unfold objects, you can see all the properties defined in this object.
+- It's possible to change the value of a variable on the fly by double-clicking the variable.
+- By hovering over a function parameter or a variable directly in the editor window, you can also peek at its value:
+
+![Debud in Visual Studio](/Tutorials/NodeJS/Images/DebugVsCodeDetails3.png)
+
+### Watch variables
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+- If you want to track a **variable state across time** or **different functions**, the Watch panel comes to play.
+
+- You can select the **plus button** to enter a **variable name** or **an expression to watch**. As an alternative, you can **right-click a variable** in the **Variables pane**, and select Add to watch.
+
+- All expressions inside the watch pane will be updated automatically as your code runs.
+
+![Debud in Visual Studio](/Tutorials/NodeJS/Images/DebugVsCodeDetails4.png)
+
+### Call stack
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+- Every time your program enters a function, an entry is added to the call stack. When your application becomes complex, and you have functions called within functions many times, the call stack represents the trail of functions calls. It's useful to find the source of an exception.
+
+![Debud in Visual Studio](/Tutorials/NodeJS/Images/DebugVsCodeDetails5.png)
+
+- Call stack **filters out unwanted information** to show you only the relevant functions from **your own code** by default. You then can unwind this call stack to find out where the exception originated from
+
+![Debud in Visual Studio](/Tutorials/NodeJS/Images/DebugVsCodeDetails6.png)
+
+### View loaded script files
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+- This panel displays all the JavaScript files that have been loaded so far. In large projects, sometimes it can be useful to check which file the current code is executing from.
+
+### Breakpoints panel
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+- In the Breakpoints panel, you can see and toggle all the breakpoints you placed in your code. You can also toggle options to break on caught or uncaught exceptions. You can use the Breakpoints pane to examine your program state and trace back the source of an exception by using the Call stack when one occurs.
+
+![Debud in Visual Studio](/Tutorials/NodeJS/Images/DebugVsCodeDetails7.png)
+
+### Control execution
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+From left to right, the controls are:
+
+1. **Continue or pause execution**. If execution is paused, it will continue until the next breakpoint is hit. If your program is running, the button switches to a pause button that you can use to pause execution.
+1. **Step over**. Executes the next code statement in the current context (same as the next command in the built-in debugger).
+1. **Step into**. Like Step over, but if the next statement is a function call, move on to the first code statement of this function (same as the step command).
+1. **Step out**. If you're inside a function, execute the remaining code of this function and jump back to the statement after the initial function call (same as the out command).
+1. **Restart**. Restart your program from the beginning.
+1. **Stop**. End the execution and leave the debugger.
+
+![Debud in Visual Studio](/Tutorials/NodeJS/Images/DebugVsCodeDetails8.png)
+
+### Use the debug console
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+It can be used to visualize your application console logs, and to evaluate expressions or execute code in the current execution content, like the `exec command` in the built-in `Node.js` debugger.
+
+You can **enter** a JavaScript expression in the **input field** at the bottom of the debug console. Then, press **Enter** to evaluate it. The result displays directly in the console.
+
+This way, you can quickly **check a variable value**, test a **function with different values**, or **alter the current state**.
+
+![Debud in Visual Studio](/Tutorials/NodeJS/Images/DebugVsCodeDetails9.png)
+
+### Add logpoints
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+- If you want to follow the execution of your program by using logs, **there's an alternative** to using **`console.log`** to do that. You can use **logpoints**.
+
+- By right-clicking in the same area that you used to add a **breakpoint**, you can select **Add logpoint**.
+
+- Enter a message to display at that point in your code. It's even possible **to print expressions** by enclosing them in brackets by using **`{<EXPRESSION>}`**.
+
+- Like breakpoints, logpoints **don't alter your code** in any way, and are used only during debugging. You don't have an excuse anymore to let that forgotten `console.log('here')` slip to production.
+
+![Debud in Visual Studio](/Tutorials/NodeJS/Images/DebugVsCodeDetails10.png)
+
+---
+
+## Exercise: Debud using launch configuration (launch.json)
+
+[&#9650;](#debug-nodejs-apps-with-vscode)
+
+**`PS:`**  
+Refer to the following folder for the exercise files:
+
+> **exercise5_DebugNodeJS_2**
+
+- For this exercise, you need a JavaScript file to practice debugging. To use the debugger launch controls, the JavaScript file must be in a Visual Studio workspace.
+
+- The goal of the program is to set the exchange rate between three currencies, USD, EUR, and JPY.
+  
+- Then, we want to display how much value 10 EUR is in the other currencies by using two digits after the decimal point. For every currency added, the exchange rate for all other currencies should be calculated.
+
+**1 . create a** `currency.js` file with teh following code:
+
+**`currency.js`**
+
+```js
+const rates = {};
+
+function setExchangeRate(rate, sourceCurrency, targetCurrency) {
+  if (rates[sourceCurrency] === undefined) {
+    rates[sourceCurrency] = {};
+  }
+
+  if (rates[targetCurrency] === undefined) {
+    rates[targetCurrency] = {};
+  }
+
+  rates[sourceCurrency][targetCurrency] = rate;
+  rates[targetCurrency][sourceCurrency] = 1 / rate;
+}
+
+function convertToCurrency(value, sourceCurrency, targetCurrency) {
+  const exchangeRate = rates[sourceCurrency][targetCurrency];
+  return exchangeRate && value * exchangeRate;
+}
+
+function formatValueForDisplay(value) {
+  return value.toFixed(2);
+}
+
+function printForeignValues(value, sourceCurrency) {
+  console.info(`The value of ${value} ${sourceCurrency} is:`);
+
+  for (const targetCurrency in rates) {
+    if (targetCurrency !== sourceCurrency) {
+      const convertedValue = convertToCurrency(value, sourceCurrency, targetCurrency);
+      const displayValue = formatValueForDisplay(convertedValue);
+      console.info(`- ${convertedValue} ${targetCurrency}`);
+    }
+  }
+}
+
+setExchangeRate(0.88, 'USD', 'EUR');
+setExchangeRate(107.4, 'USD', 'JPY');
+printForeignValues(10, 'EUR');
+```
+
+**2 . Create** a launch configuration (`launch.json`), by selecting the **Edit the launch.json file** button on the **Debug Controls**
+
+The file should be edited to match the following code (path to be adjusted if needed):
+
+```json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "outputCapture": "std",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+             "program": "${workspaceFolder}\\Tutorials\\NodeJS\\exercise5_DebugNodeJS_2\\currency.js"
+        }
+    ]
+}
+```
+
+**Or:**
+
+- Open the `currency.js` file and leave it open
+- Open the VSCode **Command Palette** `(Ctrl+Shift+P)`
+- search for **`Debug: Add Configuration`**
+- select **`Node.js`**
+- The path to the program should **automatically point towards the open .js** file
+- Path could be as well in the format "program": *`"C:/Users/UserName/FolderName/currency.js"`*
+- Add **`"outputCapture": "std"`** to increase the logging output
+
+**3 . Open** the Debug Consol
+
+**4 . Launch** the program through the Debugger Controls
+
+![Debud in Visual Studio](/Tutorials/NodeJS/Images/DebugVsCodeDetails11.png)
+
+You should get an output as follows:
+
+```text
+Debugger attached.
+The value of 10 EUR is:
+- 11.363636363636365 USD
+Waiting for the debugger to disconnect...
+C:\Code\VsCode_My_WebApp\Tutorials\NodeJS\exercise5_DebugNodeJS_2\currency.js:22
+  return value.toFixed(2);
+               ^
+
+TypeError: Cannot read properties of undefined (reading 'toFixed')
+    at formatValueForDisplay (C:\Code\VsCode_My_WebApp\Tutorials\NodeJS\exercise5_DebugNodeJS_2\currency.js:22:16)
+    at printForeignValues (C:\Code\VsCode_My_WebApp\Tutorials\NodeJS\exercise5_DebugNodeJS_2\currency.js:31:28)
+    at Object.<anonymous> (C:\Code\VsCode_My_WebApp\Tutorials\NodeJS\exercise5_DebugNodeJS_2\currency.js:39:1)
+    at Module._compile (node:internal/modules/cjs/loader:1254:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1308:10)
+    at Module.load (node:internal/modules/cjs/loader:1117:32)
+    at Module._load (node:internal/modules/cjs/loader:958:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at node:internal/main/run_main_module:23:47
+
+Node.js v18.16.0
+```
+
+What this program aims to do is set the exchange rate between three currencies (USD, EUR, JPY), and display the value for 10 EUR in all the other currencies, with two digits after the decimal point.
+
+We can see two bugs here:
+
+- There are more than two digits after the decimal point.
+- The program crashed with an exception and failed to display the JPY value.
+
+**5. Fix the Errors:**
+
+**from:**
+
+```js
+console.info(`- ${convertedValue } ${targetCurrency}`);
+```
+
+**to:**
+
+```js
+console.info(`- ${displayValue} ${targetCurrency}`);
+```
+
+**from:**
+
+```js
+rates[sourceCurrency][targetCurrency] = rate;
+rates[targetCurrency][sourceCurrency] = 1 / rate;
+```
+
+**to:**
+
+```js
+for (const currency in rates) {
+  if (currency !== targetCurrency) {
+    // Use a pivot rate for currencies that don't have the direct conversion rate
+    const pivotRate = currency === sourceCurrency ? 1 : rates[currency][sourceCurrency];
+    rates[currency][targetCurrency] = rate * pivotRate;
+    rates[targetCurrency][currency] = 1 / (rate * pivotRate);
+  }
+}
+```
+
+**full new code for** **`currency.js`**
+
+```js
+const rates = {};
+
+function setExchangeRate(rate, sourceCurrency, targetCurrency) {
+  if (rates[sourceCurrency] === undefined) {
+    rates[sourceCurrency] = {};
+  }
+
+  if (rates[targetCurrency] === undefined) {
+    rates[targetCurrency] = {};
+  }
+
+  for (const currency in rates) {
+    if (currency !== targetCurrency) {
+      // Use a pivot rate for currencies that don't have the direct conversion rate
+      const pivotRate = currency === sourceCurrency ? 1 : rates[currency][sourceCurrency];
+      rates[currency][targetCurrency] = rate * pivotRate;
+      rates[targetCurrency][currency] = 1 / (rate * pivotRate);
+    }
+  }
+}
+
+function convertToCurrency(value, sourceCurrency, targetCurrency) {
+  const exchangeRate = rates[sourceCurrency][targetCurrency];
+  return exchangeRate && value * exchangeRate;
+}
+
+function formatValueForDisplay(value) {
+  return value.toFixed(2);
+}
+
+function printForeignValues(value, sourceCurrency) {
+  console.info(`The value of ${value} ${sourceCurrency} is:`);
+
+  for (const targetCurrency in rates) {
+    if (targetCurrency !== sourceCurrency) {
+      const convertedValue = convertToCurrency(value, sourceCurrency, targetCurrency);
+      const displayValue = formatValueForDisplay(convertedValue);
+      console.info(`- ${displayValue } ${targetCurrency}`);
+    }
+  }
+}
+
+setExchangeRate(0.88, 'USD', 'EUR');
+setExchangeRate(107.4, 'USD', 'JPY');
+printForeignValues(10, 'EUR');
+```

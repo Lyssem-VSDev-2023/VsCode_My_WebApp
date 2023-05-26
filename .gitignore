@@ -364,3 +364,6 @@ FodyWeavers.xsd
 
 # Node.JS after glup install files
 node_modules
+
+# .vscode
+# .vscode

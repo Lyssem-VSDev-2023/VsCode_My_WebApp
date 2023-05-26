@@ -1,3 +1,4 @@
-var firstName = "Lyes";
-var sentence = "My name is ".concat(firstName, ".\n    I am new to TypeScript.");
-console.log(sentence);
+
+
+let myLoan = loanCalculator(1000, 5);
+console.log(myLoan); 

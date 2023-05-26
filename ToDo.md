@@ -15,3 +15,4 @@
 - [ ] Recovet the WebAPI Tuto
 - [ ] Find a way to link LyWebApp to ASP.NET MVC website
 - [ ] Clean the Code Folder and corresponding GitHub Repos
+- [ ] npm audit to check app vulnerbilities
