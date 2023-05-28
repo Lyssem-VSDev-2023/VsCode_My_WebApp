@@ -6,6 +6,9 @@
 - [ ] React
 - [ ] Angular
 - [ ] Python
+- [ ] NoSQL DB - CouchDB and MongoDB
+- [ ] NativeScript - native mobile applications.
+- [ ] use Babel to transform your code to be ES5-compatible before shipping it to the browser
 
 ## ToDo
 
@@ -16,3 +19,4 @@
 - [ ] Find a way to link LyWebApp to ASP.NET MVC website
 - [ ] Clean the Code Folder and corresponding GitHub Repos
 - [ ] npm audit to check app vulnerbilities
+- [ ] Save Custom Snippets (C:\Users\elyeben\AppData\Roaming\Code\User\snippets)

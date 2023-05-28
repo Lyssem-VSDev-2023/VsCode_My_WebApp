@@ -20,6 +20,8 @@ A `package.json` file isn't something you author by hand. It's the result of run
   
 - **`npm init -y:`** This command uses the **`-y`** flag, and is a faster version of the `npm init` command because it's not interactive. Instead, this command **automatically assigns default values** for all values you're prompted to enter by using the npm init.
 
+- **`npm install:`** if a **`package.json`** file has dependencies **not installed**, this command will install them.
+
 The `npm init` and `npm init -y` commands both generate a `package.json` file. Here's an example:
 
 ```json
