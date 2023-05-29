@@ -5,7 +5,10 @@
     "gulp": "^4.0.2",
     "gulp-markdown-it": "^0.1.1",
     "lodash": "^4.17.21",
-    "node-fetch": "^3.3.1"
+    "node-fetch": "^3.3.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "snowpack": "^3.8.8"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",

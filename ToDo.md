@@ -9,6 +9,7 @@
 - [ ] NoSQL DB - CouchDB and MongoDB
 - [ ] NativeScript - native mobile applications.
 - [ ] use Babel to transform your code to be ES5-compatible before shipping it to the browser
+- [ ] CSS, SCSS and Less
 
 ## ToDo
 
@@ -20,3 +21,6 @@
 - [ ] Clean the Code Folder and corresponding GitHub Repos
 - [ ] npm audit to check app vulnerbilities
 - [ ] Save Custom Snippets (C:\Users\elyeben\AppData\Roaming\Code\User\snippets)
+- [ ] Look for best npm packages for js
+- [ ] Look for best VsCode Extensions for the different languages
+- [ ] How to save preferences of vsCode?
