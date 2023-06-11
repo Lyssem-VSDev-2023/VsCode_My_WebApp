@@ -1,19 +1,19 @@
 const fs = require("fs").promises;
 
-// /////////Part 1/////////////
+/////////Part 1/////////////
 
-// async function getDirs() {
-//   const items = await fs.readdir("stores");
-//   console.log(items); 
-// }
+async function getDirs() {
+  const items = await fs.readdir("stores");
+  console.log(items);
+}
 
-// getDirs();
+getDirs();
 
 // /////////Part 2/////////////
 
 // async function getDirsWithFileTypes() {
 //   const items = await fs.rea.readdir("stores", { withFileTypes: true });
-//   console.log(items); 
+//   console.log(items);
 //   for (let item of items) {
 //     const type = item.isDirectory() ? "folder" : "file";
 //     console.log(`${item.name}: ${type}`);
