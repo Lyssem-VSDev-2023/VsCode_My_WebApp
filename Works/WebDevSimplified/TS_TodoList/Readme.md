@@ -1,5 +1,7 @@
 # TypeScript ToDo List example
 
+[Youtube Link](https://www.youtube.com/watch?v=jBmrduvKl5w&list=PLZlA0Gpn_vH_z2fqIg50_POJrUkJgBu7g&index=1)
+
 1 . `npm init -y`  
 
 2 . `npm i --save-dev typescript`  
