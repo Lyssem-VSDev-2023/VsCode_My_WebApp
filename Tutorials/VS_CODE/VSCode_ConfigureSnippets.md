@@ -2,6 +2,7 @@
 
 - [**VSCode Snippets**](#vscode-snippets)
   - [Create a Code Snippet](#create-a-code-snippet)
+  - [Create a Global Code Snippet (Multi-language)](#create-a-global-code-snippet-multi-language)
 
 ---
 
@@ -41,3 +42,24 @@ Go to the following menu:
 Or you can go to the following:
 
 `Ctl + Shift + P` to show the console the select **`Snippets: Configure User Snippets`**
+
+## Create a Global Code Snippet (Multi-language)
+
+[&#9650;](#vscode-snippets)
+
+- Ctl+P
+- Configure User Snippets
+- New Global Snippet file
+
+Use the following code for scope
+
+```json
+"div": {
+    "scope": "javascript,javascriptreact,html,typescript,typescriptreact",
+    "prefix": ".div",
+    "body": ["<div>$TM_SELECTED_TEXT$1</div>"],
+    "description": ""
+  },
+```
+
+- [List of scope languages](https://code.visualstudio.com/docs/languages/identifiers)
