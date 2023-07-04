@@ -1,12 +1,14 @@
-import { useRef } from "react"
-import useOnScreen from "./useOnScreen"
+import { useRef } from "react";
+import useOnScreen from "./useOnScreen";
+import Back from "../../Back";
 
-export default function OnScreenComponentComponent() {
-  const headerTwoRef = useRef()
-  const visible = useOnScreen(headerTwoRef, "-100px")
+export default function OnScreenComponent() {
+  const headerTwoRef = useRef();
+  const visible = useOnScreen(headerTwoRef, "-100px");
 
   return (
     <div>
+      <Back></Back>
       <h1>Header</h1>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde incidunt,
@@ -96,5 +98,5 @@ export default function OnScreenComponentComponent() {
         adipisci!
       </div>
     </div>
-  )
+  );
 }

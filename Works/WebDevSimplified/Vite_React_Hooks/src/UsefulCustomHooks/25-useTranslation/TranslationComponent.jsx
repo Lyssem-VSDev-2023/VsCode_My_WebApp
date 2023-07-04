@@ -1,10 +1,12 @@
-import useTranslation from "./useTranslation"
+import Back from "../../Back";
+import useTranslation from "./useTranslation";
 
 export default function TranslationComponent() {
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation()
+  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
 
   return (
     <>
+      <Back></Back>
       <div>{language}</div>
       <div>{t("hi")}</div>
       <div>{t("bye")}</div>
@@ -13,5 +15,5 @@ export default function TranslationComponent() {
       <button onClick={() => setLanguage("en")}>Change To English</button>
       <button onClick={() => setFallbackLanguage("sp")}>Change FB Lang</button>
     </>
-  )
+  );
 }

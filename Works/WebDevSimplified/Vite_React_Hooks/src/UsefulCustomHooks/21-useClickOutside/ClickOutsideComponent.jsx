@@ -1,17 +1,21 @@
-import { useRef, useState } from "react"
-import useClickOutside from "./useClickOutside"
+import { useRef, useState } from "react";
+import useClickOutside from "./useClickOutside";
+import Back from "../../Back";
 
 export default function ClickOutsideComponent() {
-  const [open, setOpen] = useState(false)
-  const modalRef = useRef()
+  const [open, setOpen] = useState(true);
+  const modalRef = useRef(null);
 
   useClickOutside(modalRef, () => {
-    if (open) setOpen(false)
-  })
+    if (open) setOpen(false);
+  });
 
   return (
     <>
-      <button onClick={() => setOpen(true)}>Open</button>
+      <Back></Back>
+      <button type="button" onClick={() => setOpen(true)}>
+        Open
+      </button>
       <div
         ref={modalRef}
         style={{
@@ -28,5 +32,5 @@ export default function ClickOutsideComponent() {
         <span>Modal</span>
       </div>
     </>
-  )
+  );
 }

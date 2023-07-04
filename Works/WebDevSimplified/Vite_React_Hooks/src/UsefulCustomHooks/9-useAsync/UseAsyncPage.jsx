@@ -1,20 +1,22 @@
-import useAsync from "./useAsync"
+import Back from "../../Back";
+import useAsync from "./useAsync";
 
-export default function AsyncComponent() {
+export default function UseAsyncPage() {
   const { loading, error, value } = useAsync(() => {
     return new Promise((resolve, reject) => {
-      const success = false
+      const success = true;
       setTimeout(() => {
-        success ? resolve("Hi") : reject("Error")
-      }, 1000)
-    })
-  })
+        success ? resolve("Hi") : reject("Error");
+      }, 1000);
+    });
+  });
 
   return (
     <div>
+      <Back></Back>
       <div>Loading: {loading.toString()}</div>
       <div>{error}</div>
       <div>{value}</div>
     </div>
-  )
+  );
 }

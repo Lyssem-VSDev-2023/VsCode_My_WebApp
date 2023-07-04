@@ -1,14 +1,16 @@
-import useCopyToClipboard from "./useCopyToClipboard"
+import Back from "../../Back";
+import useCopyToClipboard from "./useCopyToClipboard";
 
 export default function CopyToClipboardComponent() {
-  const [copyToClipboard, { success }] = useCopyToClipboard()
+  const [copyToClipboard, { success }] = useCopyToClipboard();
 
   return (
     <>
+      <Back></Back>
       <button onClick={() => copyToClipboard("This was copied")}>
         {success ? "Copied" : "Copy Text"}
       </button>
       <input type="text" />
     </>
-  )
+  );
 }
