@@ -1,4 +1,3 @@
-import useUpdateLogger from "../../UseCustomHooks/useUpdateLogger";
 import useEventListener from "../13-useEventListener/useEventListener";
 
 export default function useClickOutside(ref, cb) {
