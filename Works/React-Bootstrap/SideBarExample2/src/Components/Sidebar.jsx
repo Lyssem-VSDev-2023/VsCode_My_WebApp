@@ -25,6 +25,9 @@ const NavIcon = styled(Link)`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 `;
 
 const SidebarNav = styled.nav`
@@ -35,7 +38,8 @@ const SidebarNav = styled.nav`
   justify-content: center;
   position: fixed;
   top: 0px;
-  left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
+  /* left: ${({ sidebar }) => (sidebar ? "0" : "-100%")}; */
+  left: ${({ sidebar }) => (sidebar ? "0" : "0")};
   transition: 350ms;
   z-index: 10;
 `;
@@ -52,7 +56,7 @@ function Sidebar() {
 
   const showSidebar = () => setSidebar(true);
   const hideSidebar = () => {
-    setSidebar(false);
+    setSidebar(true);
   };
 
   return (
@@ -60,7 +64,8 @@ function Sidebar() {
       <IconContext.Provider value={{ color: "#fff" }}>
         <Nav>
           <NavIcon to="#">
-            <FaIcons.FaBars onClick={showSidebar} />
+            {/* <FaIcons.FaBars onClick={showSidebar} /> */}
+            My Web App
           </NavIcon>
         </Nav>
         <SidebarNav
@@ -70,10 +75,13 @@ function Sidebar() {
         >
           <SidebarWrap>
             <NavIcon to="#">
-              <AiIcons.AiOutlineClose onClick={hideSidebar} />
+              {/* <AiIcons.AiOutlineClose onClick={hideSidebar} /> */}
+              My Web App
             </NavIcon>
             {SidebarData.map((item, index) => {
-              return <SubMenu item={item} key={index} />;
+              return (
+                <SubMenu item={item} key={index} hideSidebar={hideSidebar} />
+              );
             })}
           </SidebarWrap>
         </SidebarNav>
