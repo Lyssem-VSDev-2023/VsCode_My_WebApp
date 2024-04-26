@@ -1,4 +1,4 @@
-# **Initialize package.json & Scripts**
+# **Initialize package.json & Scripts** 
 
 - [**Initialize package.json \& Scripts**](#initialize-packagejson--scripts)
   - [Initialize a package.json](#initialize-a-packagejson)

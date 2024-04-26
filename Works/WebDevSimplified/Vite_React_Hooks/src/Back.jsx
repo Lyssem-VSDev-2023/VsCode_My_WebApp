@@ -1,9 +1,11 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Back() {
   return (
     <div>
-      <a href="/">Home</a>
+      <NavLink to={"/reacthooks"}>Back to Hooks list</NavLink>
+
       <br />
       <br />
     </div>

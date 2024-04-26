@@ -31,11 +31,11 @@ before updating a library, we need to assess:
 
 [&#9650;](#manage-packages-dependencies)
 
-|Type|What happens|Impact|
-|-|-|-|
-|**Major version**|1.0.0 changes to **2**.0.0|expect breaking changes in the code. You might need to rewrite part of your code|
-|**Minor version**|1.2.9 changes to 1.**3**.0|features have been added. Your code should still work. It's generally safe to accept the update|
-|**Patch version**|1.0.7 changes to 1.0.**8**|a change has been applied that fixes something in the code that should have worked. It should be safe to accept the update|
+| Type              | What happens               | Impact                                                                                                                     |
+| ----------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **Major version** | 1.0.0 changes to **2**.0.0 | expect breaking changes in the code. You might need to rewrite part of your code                                           |
+| **Minor version** | 1.2.9 changes to 1.**3**.0 | features have been added. Your code should still work. It's generally safe to accept the update                            |
+| **Patch version** | 1.0.7 changes to 1.0.**8** | a change has been applied that fixes something in the code that should have worked. It should be safe to accept the update |
 
 ## Update a package by using npm
 
@@ -58,11 +58,11 @@ An npm package is updated if:
 
 We can automate the approach that will be used by the `npm update <name of dependency>` command in the manifest file
 
-|Pattern|Update level|
-|-|-|
-|x.0.0 or * (asterisk)|Update to the highest major version.|
-|1.x.1 or ^ (insert)|Update to only the minor version.|
-|1.1.x or ~ (tilde)|Update to the latest patch version. You can use the pattern "~1.0.0" to update only the patch version. The pattern causes an update to the value "equal to or greater than in the same range." |
+| Pattern               | Update level                                                                                                                                                                                   |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| x.0.0 or * (asterisk) | Update to the highest major version.                                                                                                                                                           |
+| 1.x.1 or ^ (insert)   | Update to only the minor version.                                                                                                                                                              |
+| 1.1.x or ~ (tilde)    | Update to the latest patch version. You can use the pattern "~1.0.0" to update only the patch version. The pattern causes an update to the value "equal to or greater than in the same range." |
 
 ## package-lock.json
 
@@ -131,12 +131,12 @@ To fix an issue and apply an update, you can run the `npm audit` command.
 ```text
 # Run  npm install lodash@4.17.15  to resolve 3 vulnerabilities
 
-| Low            | Prototype Pollution               |
-|----------------|-----------------------------------|
-| Package        | lodash                            |
-| Dependency of  | lodash                            |
-| Path           | lodash                            |
-| More info      | https://npmjs.com/advisories/577  |  
+| Low           | Prototype Pollution              |
+| ------------- | -------------------------------- |
+| Package       | lodash                           |
+| Dependency of | lodash                           |
+| Path          | lodash                           |
+| More info     | https://npmjs.com/advisories/577 |
 ```
 
 - The `npm audit fix` command tries to fix the problem. It tries to upgrade to a minor version where the problem doesn't exist.

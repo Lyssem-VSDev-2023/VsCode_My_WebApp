@@ -9,19 +9,18 @@ function Home() {
 
   return (
     <>
-      <Button onClick={() => setItem(1)}>List Rendering</Button>
       <div>
         {(() => {
           switch (item) {
             case 1:
               return (
                 <>
-                  <Back></Back>
+                  <Back setItem={setItem}></Back>
                   <ListRendering></ListRendering>
                 </>
               );
             default:
-              return null;
+              return <Button onClick={() => setItem(1)}>List Rendering</Button>;
           }
         })()}
       </div>

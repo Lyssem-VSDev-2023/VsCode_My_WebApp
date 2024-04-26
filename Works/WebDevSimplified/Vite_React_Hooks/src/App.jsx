@@ -52,6 +52,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home></Home>} />
+      <Route path="/reacthooks" element={<Home></Home>} />
       <Route path="/useState" element={<UseStatePage />} />
       <Route path="/useEffect" element={<UseEffectPage />} />
       <Route path="/useContext" element={<UseContextPage></UseContextPage>} />

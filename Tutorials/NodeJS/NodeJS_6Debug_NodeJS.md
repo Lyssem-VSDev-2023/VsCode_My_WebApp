@@ -112,35 +112,35 @@ debug>
 
 You can now use one of the **multiple commands** to control the execution of your program:
 
-|Command|Description|
-|-|-|
-|`cont` or `c` => **Continue**|Continues the execution until the next breakpoint or the end of your program|
-|`next` or `n` => **Step next**|Executes the next line of code in the current context|
-|`step` or `s` => **Step in**|Same as next, except that if the next line of code is a function call, go to the first line of this function's code.|
-|`out` or `o` => **Step out**|If the current execution context is inside the code of a function, execute the remaining code of this function and jump back to the line of code where this function was initially called.|
-|`restart` or `r` => **Restart**|Restarts the program and pauses the execution before the start of your code.|
+| Command                         | Description                                                                                                                                                                                |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `cont` or `c` => **Continue**   | Continues the execution until the next breakpoint or the end of your program                                                                                                               |
+| `next` or `n` => **Step next**  | Executes the next line of code in the current context                                                                                                                                      |
+| `step` or `s` => **Step in**    | Same as next, except that if the next line of code is a function call, go to the first line of this function's code.                                                                       |
+| `out` or `o` => **Step out**    | If the current execution context is inside the code of a function, execute the remaining code of this function and jump back to the line of code where this function was initially called. |
+| `restart` or `r` => **Restart** | Restarts the program and pauses the execution before the start of your code.                                                                                                               |
 
 To set or clear breakpoints in your code, use the following commands:
 
-|Command|Description|
-|-|-|
-|`setBreakpoint()` or `sb()`|Add a breakpoint on the current line.|
-|`setBreakpoint(<N>)` or `sb(<N>)`|Add a breakpoint on line number N.|
-|`clearBreakpoint('myscript.js', <N>)` or `cb('myscript.js', <N>)`|Clear the breakpoint in the file myscript.js on line number N.|
+| Command                                                           | Description                                                    |
+| ----------------------------------------------------------------- | -------------------------------------------------------------- |
+| `setBreakpoint()` or `sb()`                                       | Add a breakpoint on the current line.                          |
+| `setBreakpoint(<N>)` or `sb(<N>)`                                 | Add a breakpoint on line number N.                             |
+| `clearBreakpoint('myscript.js', <N>)` or `cb('myscript.js', <N>)` | Clear the breakpoint in the file myscript.js on line number N. |
 
 To get information about the current execution point, run these commands:
 
-|Command|Description|
-|-|-|
-|`list(<N>)`| List your source code with N lines before and after the current execution point.|
-|`exec <EXPR>`|Evaluate an expression within the current execution context. This command is useful to help you get information about the current state. For example, you can get the value of a variable named i by using exec i.|
+| Command       | Description                                                                                                                                                                                                        |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `list(<N>)`   | List your source code with N lines before and after the current execution point.                                                                                                                                   |
+| `exec <EXPR>` | Evaluate an expression within the current execution context. This command is useful to help you get information about the current state. For example, you can get the value of a variable named i by using exec i. |
 
 To exit the debugger at any time:
 
-|Command|
-|-|
-|press `Ctrl+D`|
-|command `.exit`|
+| Command         |
+| --------------- |
+| press `Ctrl+D`  |
+| command `.exit` |
 
 ## Exercise - Use the Node.js built-in debugger
 

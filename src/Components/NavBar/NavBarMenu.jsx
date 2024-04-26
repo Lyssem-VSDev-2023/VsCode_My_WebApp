@@ -11,7 +11,7 @@ function NavBarMenu() {
   const navigate = useNavigate();
 
   return (
-    <Navbar bg="dark" data-bs-theme="dark" className="fixed-top">
+    <Navbar bg="dark" data-bs-theme="dark">
       <Container fluid>
         <Navbar.Brand href="/" className="fs-3">
           My Web App
@@ -20,7 +20,6 @@ function NavBarMenu() {
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="me-auto ps-5 ms-4 my-4 my-lg-0 fs-6 fw-medium"
-            style={{ maxHeight: "100px" }}
             navbarScroll
           >
             {NavbarData.map((item, index) => {

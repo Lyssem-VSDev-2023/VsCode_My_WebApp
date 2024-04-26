@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Back from "./Back";
+import { result } from "lodash";
 
 function UseEffectPage() {
   /****************************** Execute at every render ********************************/
@@ -12,7 +13,6 @@ function UseEffectPage() {
   /****************************** Execute at specific resource change ********************************/
 
   const [resourceType2, setResourceType2] = useState("posts");
-  const [items, setItems] = useState([])
 
   useEffect(() => {
     console.log("rendered");
@@ -21,18 +21,17 @@ function UseEffectPage() {
   /****************************** Example of Cleanup (return) ********************************/
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  
+
   const handleResize = () => {
-    setWindowWidth(window.innerWidth)
-  }
+    setWindowWidth(window.innerWidth);
+  };
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize)
+    window.addEventListener("resize", handleResize);
 
     // return (
     //   window.removeEventListener('resize', handleResize)
     // )
-
   }, []);
 
   /****************************** Execute at specific resource change ********************************/
@@ -41,11 +40,16 @@ function UseEffectPage() {
   //Fake JSON Data API
   //https://jsonplaceholder.typicode.com/guide/
 
+  const [items, setItems] = useState([]);
+  let resURL = `https://jsonplaceholder.typicode.com/${resourceType3}`;
+
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/${resourceType3}`)
+    fetch(resURL)
       .then((response) => response.json())
       .then((json) => setItems(json));
   }, [resourceType3]);
+
+  console.log(items);
 
   /**************************************************************/
 
@@ -54,9 +58,24 @@ function UseEffectPage() {
       <Back></Back>
       Execute at every render
       <div>
-        <button onClick={() => setResourceType("posts")}>Posts</button>
-        <button onClick={() => setResourceType("users")}>Users</button>
-        <button onClick={() => setResourceType("comments")}>Comments</button>
+        <button
+          className="secondary bg-dark text-light me-2 p-2"
+          onClick={() => setResourceType("posts")}
+        >
+          Posts
+        </button>
+        <button
+          className="secondary bg-dark text-light me-2 p-2"
+          onClick={() => setResourceType("users")}
+        >
+          Users
+        </button>
+        <button
+          className="secondary bg-dark text-light me-2 p-2"
+          onClick={() => setResourceType("comments")}
+        >
+          Comments
+        </button>
       </div>
       <h1>{resourceType}</h1>
       <br />
@@ -64,9 +83,24 @@ function UseEffectPage() {
       <hr></hr>
       Execute at specific resource change
       <div>
-        <button onClick={() => setResourceType2("posts")}>Posts</button>
-        <button onClick={() => setResourceType2("users")}>Users</button>
-        <button onClick={() => setResourceType2("comments")}>Comments</button>
+        <button
+          className="secondary bg-dark text-light me-2 p-2"
+          onClick={() => setResourceType2("posts")}
+        >
+          Posts
+        </button>
+        <button
+          className="secondary bg-dark text-light me-2 p-2"
+          onClick={() => setResourceType2("users")}
+        >
+          Users
+        </button>
+        <button
+          className="secondary bg-dark text-light me-2 p-2"
+          onClick={() => setResourceType2("comments")}
+        >
+          Comments
+        </button>
       </div>
       <h1>{resourceType2}</h1>
       <br />
@@ -81,13 +115,29 @@ function UseEffectPage() {
       <hr></hr>
       Example of specific resource change with fetch API
       <div>
-        <button onClick={() => setResourceType3("posts")}>Posts</button>
-        <button onClick={() => setResourceType3("users")}>Users</button>
-        <button onClick={() => setResourceType3("comments")}>Comments</button>
+        <button
+          className="secondary bg-dark text-light me-2 p-2"
+          onClick={() => setResourceType3("posts")}
+        >
+          Posts
+        </button>
+        <button
+          className="secondary bg-dark text-light me-2 p-2"
+          onClick={() => setResourceType3("users")}
+        >
+          Users
+        </button>
+        <button
+          className="secondary bg-dark text-light me-2 p-2"
+          onClick={() => setResourceType3("comments")}
+        >
+          Comments
+        </button>
       </div>
       <h1>{resourceType3}</h1>
-      {items.map(item => {
-        return <pre>{JSON.stringify(item)}</pre>
+      {items.map((it, index) => {
+        const i = it.body;
+        return <pre key={index}>{i}</pre>;
       })}
     </>
   );

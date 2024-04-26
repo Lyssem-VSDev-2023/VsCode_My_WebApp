@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Home() {
   return (
@@ -6,147 +7,153 @@ function Home() {
       <b>Most Used</b>
       <ul>
         <li>
-          <a href="/useState">useState</a>
+          <NavLink to={"/useState"}>useState</NavLink>
         </li>
         <li>
-          <a href="/useEffect">useEffect</a>
+          <NavLink to={"/useEffect"}>useEffect</NavLink>
         </li>
         <li>
-          <a href="/useContext">useContext</a>
+          <NavLink to={"/useContext"}>useContext</NavLink>
         </li>
       </ul>
       <br /> <b>Less Used</b>
       <ul>
         <li>
-          <a href="/useRef">useRef</a>
+          <NavLink to={"/useRef"}>useRef</NavLink>
         </li>
         <li>
-          <a href="/useMemo">useMemo</a>
+          <NavLink to={"/useMemo"}>useMemo</NavLink>
         </li>
         <li>
-          <a href="/useCallback">useCallback</a>
+          <NavLink to={"/useCallback"}>useCallback</NavLink>
         </li>
         <li>
-          <a href="/useReducer">useReducer</a>
+          <NavLink to={"/useReducer"}>useReducer</NavLink>
         </li>
         <li>
-          <a href="/useTransition">useTransition</a>
+          <NavLink to={"/useTransition"}>useTransition</NavLink>
         </li>
         <li>
-          <a href="/useDeferredValue">useDeferredValue</a>
+          <NavLink to={"/useDeferredValue"}>useDeferredValue</NavLink>
         </li>
       </ul>
       <br /> <b>Optional Hooks</b>
       <ul>
         <li>
-          <a href="/useLayoutEffect">useLayoutEffect</a>
+          <NavLink to={"/useLayoutEffect"}>useLayoutEffect</NavLink>
         </li>
         <li>
-          <a href="/UseDebugValuePage">useDebugValue</a>
+          <NavLink to={"/UseDebugValuePage"}>useDebugValue</NavLink>
         </li>
         <li>
-          <a href="/useImperativeHandlePage">useImperativeHandle</a>
+          <NavLink to={"/useImperativeHandlePage"}>useImperativeHandle</NavLink>
         </li>
         <li>
-          <a href="/useIdPage">useId</a>
+          <NavLink to={"/useIdPage"}>useId</NavLink>
         </li>
       </ul>
       <br /> <b>Custom Hooks</b>
       <ol>
         <li>
-          <a href="/useCustomHooksPage">
+          <NavLink to={"/useCustomHooksPage"}>
             UseCustomHooks (useLocalStorage Example)
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a href="/useTogglePage">useTogglePage</a>
+          <NavLink to={"/useTogglePage"}>useTogglePage</NavLink>
         </li>
         <li>
-          <a href="/useTimeoutPage">useTimeout</a>
+          <NavLink to={"/useTimeoutPage"}>useTimeout</NavLink>
         </li>
         <li>
-          <a href="/useDebouncePage">useDebounce</a>
+          <NavLink to={"/useDebouncePage"}>useDebounce</NavLink>
         </li>
         <li>
-          <a href="/useUpdateEffectPage">useUpdateEffect</a>
+          <NavLink to={"/useUpdateEffectPage"}>useUpdateEffect</NavLink>
         </li>
         <li>
-          <a href="/useArrayPage">useArray</a>
+          <NavLink to={"/useArrayPage"}>useArray</NavLink>
         </li>
         <li>
-          <a href="/UsePreviousPage">usePrevious</a>
+          <NavLink to={"/UsePreviousPage"}>usePrevious</NavLink>
         </li>
         <li>
-          <a href="/UseStateWithHistoryPage">useStateWithHistory</a>
+          <NavLink to={"/UseStateWithHistoryPage"}>useStateWithHistory</NavLink>
         </li>
         <li>
-          <a href="/UseStoragePage">useStorage</a>
+          <NavLink to={"/UseStoragePage"}>useStorage</NavLink>
         </li>
         <li>
-          <a href="/UseAsyncPage">useAsync</a>
+          <NavLink to={"/UseAsyncPage"}>useAsync</NavLink>
         </li>
         <li>
-          <a href="/UseFetchPage">useFetch</a>
+          <NavLink to={"/UseFetchPage"}>useFetch</NavLink>
         </li>
         <li>
-          <a href="/UseScriptPage">useScript</a>
+          <NavLink to={"/UseScriptPage"}>useScript</NavLink>
         </li>
         <li>
-          <a href="/DeepCompareEffectComponent">useDeepCompareEffect</a>
+          <NavLink to={"/DeepCompareEffectComponent"}>
+            useDeepCompareEffect
+          </NavLink>
         </li>
         <li>
-          <a href="/EventListenerComponent">useEventListener</a>
+          <NavLink to={"/EventListenerComponent"}>useEventListener</NavLink>
         </li>
         <li>
-          <a href="/OnScreenComponent">useOnScreen</a>
+          <NavLink to={"/OnScreenComponent"}>useOnScreen</NavLink>
         </li>
         <li>
-          <a href="/WindowSizeComponent">useWindowSize</a>
+          <NavLink to={"/WindowSizeComponent"}>useWindowSize</NavLink>
         </li>
         <li>
-          <a href="/MediaQueryComponent">useMediaQuery</a>
+          <NavLink to={"/MediaQueryComponent"}>useMediaQuery</NavLink>
         </li>
         <li>
-          <a href="/GeolocationComponent">useGeolocation</a>
+          <NavLink to={"/GeolocationComponent"}>useGeolocation</NavLink>
         </li>
         <li>
-          <a href="/StateWithValidationComponent">useStateWithValidation</a>
+          <NavLink to={"/StateWithValidationComponent"}>
+            useStateWithValidation
+          </NavLink>
         </li>
         <li>
-          <a href="/SizeComponent">useSize</a>
+          <NavLink to={"/SizeComponent"}>useSize</NavLink>
         </li>
         <li>
-          <a href="/EffectOnceComponent">useEffectOnce</a>
+          <NavLink to={"/EffectOnceComponent"}>useEffectOnce</NavLink>
         </li>
         <li>
-          <a href="/ClickOutsideComponent">useClickOutside</a>
+          <NavLink to={"/ClickOutsideComponent"}>useClickOutside</NavLink>
         </li>
         <li>
-          <a href="/DarkModeComponent">useDarkMode</a>
+          <NavLink to={"/DarkModeComponent"}>useDarkMode</NavLink>
         </li>
         <li>
-          <a href="/CopyToClipboardComponent">useCopyToClipboard</a>
+          <NavLink to={"/CopyToClipboardComponent"}>useCopyToClipboard</NavLink>
         </li>
         <li>
-          <a href="/CookieComponent">useCookie</a>
+          <NavLink to={"/CookieComponent"}>useCookie</NavLink>
         </li>
         <li>
-          <a href="/TranslationComponent">useTranslation</a>
+          <NavLink to={"/TranslationComponent"}>useTranslation</NavLink>
         </li>
         <li>
-          <a href="/OnlineStatusComponent">useOnlineStatus</a>
+          <NavLink to={"/OnlineStatusComponent"}>useOnlineStatus</NavLink>
         </li>
         <li>
-          <a href="/RenderCountComponent">useRenderCount</a>
+          <NavLink to={"/RenderCountComponent"}>useRenderCount</NavLink>
         </li>
         <li>
-          <a href="/DebugInformationComponent">useDebugInformation</a>
+          <NavLink to={"/DebugInformationComponent"}>
+            useDebugInformation
+          </NavLink>
         </li>
         <li>
-          <a href="/HoverComponent">useHover</a>
+          <NavLink to={"/HoverComponent"}>useHover</NavLink>
         </li>
         <li>
-          <a href="/LongPressComponent">useLongPress</a>
+          <NavLink to={"/LongPressComponent"}>useLongPress</NavLink>
         </li>
       </ol>
     </div>

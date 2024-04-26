@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #abc;
+  min-height: 80px;
+}
+main {
+  background-color: #678;
+  min-height: 500px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+aside:nth-child(1) {
+  flex: 0 0 200px;
+  background-color: pink;
+}
+
+aside:nth-child(3) {
+  flex: 0 0 200px;
+  background-color: lightblue;
+}
+
+article {
+  flex: 1 0 auto;
+  background-color: yellow;
+}
+
+footer {
+  background-color: lightgreen;
+  min-height: 100px;
+}

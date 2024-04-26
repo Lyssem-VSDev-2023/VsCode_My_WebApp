@@ -20,7 +20,7 @@ const svgIcon = <BsIcons.BsFiletypeSvg className="mb-1 me-2" />;
 
 export const NavbarData = [
   {
-    title: "Tutorials",
+    title: "Tutorials ",
     path: "/tutorials",
     icon: <PiIcons.PiBooksDuotone />,
     iconClosed: downIcon,
@@ -56,7 +56,7 @@ export const NavbarData = [
     ],
   },
   {
-    title: "Generics",
+    title: "Generics ",
     path: "/generics",
     icon: <PiIcons.PiBooksDuotone />,
     iconClosed: downIcon,
@@ -71,7 +71,7 @@ export const NavbarData = [
     ],
   },
   {
-    title: "Toolkits",
+    title: "Toolkits ",
     path: "/toolkits",
     icon: <PiIcons.PiBooksDuotone />,
     iconClosed: downIcon,
@@ -92,7 +92,7 @@ export const NavbarData = [
     ],
   },
   {
-    title: "To Learn",
+    title: "To Learn ",
     path: "/tolearn",
     icon: <PiIcons.PiBooksDuotone />,
     iconClosed: downIcon,
@@ -109,6 +109,11 @@ export const NavbarData = [
   {
     title: "About",
     path: "/about",
+    icon: <AiIcons.AiOutlineBook />,
+  },
+  {
+    title: "Test",
+    path: "/test",
     icon: <AiIcons.AiOutlineBook />,
   },
 ];

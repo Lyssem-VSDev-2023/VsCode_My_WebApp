@@ -64,15 +64,15 @@ obj.a = 5;  // allowed
 
 Those are the allowed operations:
 
-|Symbol|Description|
-|:-:|-|
-|**`+`**|Addition: Calculates the sum of two numbers.|
-|**`-`**|Subtraction: Calculates the difference of two numbers.|
-|**`*`**|Multiplication: Calculates the product of two numbers.|
-|**`/`**|Division: Calculates the quotient of two numbers.|
-|**`%`**|Remainder: Calculates the remainder from the division of two numbers.|
-|**`++num`**|Increment a number.|
-|**`--num`**|Decrement a number.|
+|   Symbol    | Description                                                           |
+| :---------: | --------------------------------------------------------------------- |
+|   **`+`**   | Addition: Calculates the sum of two numbers.                          |
+|   **`-`**   | Subtraction: Calculates the difference of two numbers.                |
+|   **`*`**   | Multiplication: Calculates the product of two numbers.                |
+|   **`/`**   | Division: Calculates the quotient of two numbers.                     |
+|   **`%`**   | Remainder: Calculates the remainder from the division of two numbers. |
+| **`++num`** | Increment a number.                                                   |
+| **`--num`** | Decrement a number.                                                   |
 
 ### Math operations
 
@@ -307,16 +307,16 @@ Date: 8
 
 **Date operations**:
 
-|Component|Get|Set|
-|-|-|-|
-|Year|getFullYear()|setFullYear()|
-|Month|getMonth()|setMonth()|
-|Date (of month)|getDate()|setDate()|
-|Hours|getHours()|setHours()|
-|Minutes|getMinutes()|setMinutes()|
-|Seconds|getSeconds()|setSeconds()|
-|Milliseconds|getMilliseconds()|setMilliseconds()|
-|Day (of week)|getDay()||
+| Component       | Get               | Set               |
+| --------------- | ----------------- | ----------------- |
+| Year            | getFullYear()     | setFullYear()     |
+| Month           | getMonth()        | setMonth()        |
+| Date (of month) | getDate()         | setDate()         |
+| Hours           | getHours()        | setHours()        |
+| Minutes         | getMinutes()      | setMinutes()      |
+| Seconds         | getSeconds()      | setSeconds()      |
+| Milliseconds    | getMilliseconds() | setMilliseconds() |
+| Day (of week)   | getDay()          |                   |
 
 **Date formating**:
 
