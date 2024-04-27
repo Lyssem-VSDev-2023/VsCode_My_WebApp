@@ -1,9 +1,9 @@
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import "./MDXStyle.css";
+import a from "../../src/Styles/MDXStyle.css";
 import { Link } from "react-router-dom";
 
-# **Intro to Javascript** <a id="intro-to-javascript"></a><Link to="javascript">&#8678;</Link>
+# **Intro to Javascript** <a id="intro-to-javascript"></a><Link to="../tutorials/javascript">&#8678;</Link>
 
 - [Variables Declaration](#variables-declaration)
   - [var and let](#var-and-let)
@@ -76,6 +76,7 @@ export const table1=`
 
 <Markdown remarkPlugins={[remarkGfm]}>{table1}</Markdown>
 <br />
+
 ### Math operations <a id="math-operations"></a>
 
 **Declaration**:

@@ -26,3 +26,7 @@
 - [x] Look for best VsCode Extensions for the different languages
 - [ ] How to save preferences of vsCode?
 - [ ] MarkdownAll to include only two heading levels, documentation
+
+- [ ] For NodeJS Tutorials, try to list the files of the exercises from their respective folders
+- [ ] For all Tutorials, add a floating button of back to top
+- [ ] Create an Options or Settings section => possibility to change the Code Blocks Themes

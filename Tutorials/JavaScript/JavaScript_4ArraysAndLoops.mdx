@@ -1,28 +1,32 @@
-# **Arrays and Loops**
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import a from "../../src/Styles/MDXStyle.css";
+import { Link } from "react-router-dom";
 
-- [**Arrays and Loops**](#arrays-and-loops)
-  - [Manipulate arrays](#manipulate-arrays)
-  - [Other array methods](#other-array-methods)
-    - [Push and pop](#push-and-pop)
-    - [Shift and unshift](#shift-and-unshift)
-    - [Concat](#concat)
-  - [Work with Arrays and Loops](#work-with-arrays-and-loops)
-    - [For loop](#for-loop)
-    - [While loops](#while-loops)
-    - [For ... of](#for--of)
-    - [Loops and arrays](#loops-and-arrays)
-    - [forEach() loop](#foreach-loop)
-    - [Exit a loop (breack;)](#exit-a-loop-breack)
-  - [Query Arrays](#query-arrays)
-    - [find()](#find)
-    - [filter()](#filter)
-    - [some() (Check a condition)](#some-check-a-condition)
-    - [Projections map](#projections-map)
-    - [Aggregations (Accumulator and Reducer)](#aggregations-accumulator-and-reducer)
+# **Arrays and Loops** <a id="arrays-and-loops"></a><Link to="../tutorials/javascript">&#8678;</Link>
+
+- [Manipulate arrays](#manipulate-arrays)
+- [Other array methods](#other-array-methods)
+  - [Push and pop](#push-and-pop)
+  - [Shift and unshift](#shift-and-unshift)
+  - [Concat](#concat)
+- [Work with Arrays and Loops](#work-with-arrays-and-loops)
+  - [For loop](#for-loop)
+  - [While loops](#while-loops)
+  - [For ... of](#for--of)
+  - [Loops and arrays](#loops-and-arrays)
+  - [forEach() loop](#foreach-loop)
+  - [Exit a loop (breack;)](#exit-a-loop-breack)
+- [Query Arrays](#query-arrays)
+  - [find()](#find)
+  - [filter()](#filter)
+  - [some() (Check a condition)](#some-check-a-condition)
+  - [Projections map](#projections-map)
+  - [Aggregations (Accumulator and Reducer)](#aggregations-accumulator-and-reducer)
 
 ---
 
-## Manipulate arrays
+## Manipulate arrays <a id="manipulate-arrays" />
 
 [&#9650;](#arrays-and-loops)
 
@@ -95,9 +99,13 @@ iceCreamFlavor.splice(2, 1);
 // "Vanilla" removed
 ```
 
-## Other array methods
+## Other array methods <a id="other-array-methods" />
 
-### Push and pop
+[&#9650;](#arrays-and-loops)
+
+### Push and pop <a id="push-and-pop" />
+
+[&#9650;](#arrays-and-loops)
 
 ```js
 let arr1 = ["A", true, 2];
@@ -119,7 +127,9 @@ new value
 [ 'A', true, 2 ]
 ```
 
-### Shift and unshift
+### Shift and unshift <a id="shift-and-unshift" />
+
+[&#9650;](#arrays-and-loops)
 
 ```js
 //Shift and unshift
@@ -140,7 +150,9 @@ new value
 [ 'A', true, 2 ]
 ```
 
-### Concat
+### Concat <a id="concat" />
+
+[&#9650;](#arrays-and-loops)
 
 ```js
 //Concat
@@ -158,9 +170,13 @@ console.log(newArr2);
 [ 'B', false, 3, 1, 2, 3 ]
 ```
 
-## Work with Arrays and Loops
+## Work with Arrays and Loops <a id="work-with-arrays-and-loops" />
 
-### For loop
+[&#9650;](#arrays-and-loops)
+
+### For loop <a id="for-loop" />
+
+[&#9650;](#arrays-and-loops)
 
 ```js
 for (let i = 0; i < 10; i++) {
@@ -169,7 +185,9 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-### While loops
+### While loops <a id="while-loops" />
+
+[&#9650;](#arrays-and-loops)
 
 Require a condition
 
@@ -181,7 +199,9 @@ while (i < 10) {
 }
 ```
 
-### For ... of
+### For ... of <a id="for--of" />
+
+[&#9650;](#arrays-and-loops)
 
 Equivalent to forEach
 
@@ -201,7 +221,9 @@ while (i < 10) {
 }
 ```
 
-### Loops and arrays
+### Loops and arrays <a id="loops-and-arrays" />
+
+[&#9650;](#arrays-and-loops)
 
 ```js
 let iceCreamFlavors = [
@@ -218,7 +240,9 @@ for (let flavor of iceCreamFlavors) {
 }
 ```
 
-### forEach() loop
+### forEach() loop <a id="foreach-loop" />
+
+[&#9650;](#arrays-and-loops)
 
 ```js
 let numbers = [1, 2, 3, 4, 5];
@@ -227,7 +251,9 @@ numbers.forEach((number) => console.log(number)); // 1 2 3 4 5
 numbers.forEach((number, index) => console.log(`Number ${number} ${index}`));
 ```
 
-### Exit a loop (breack;)
+### Exit a loop (breack;) <a id="exit-a-loop-breack" />
+
+[&#9650;](#arrays-and-loops)
 
 ```js
 let numbers = [1, 2, -1, 4, 5];
@@ -239,9 +265,13 @@ for(let i = 0; i< numbers.length; i++>) {
 }
 ```
 
-## Query Arrays
+## Query Arrays <a id="query-arrays" />
 
-### find()
+[&#9650;](#arrays-and-loops)
+
+### find() <a id="find" />
+
+[&#9650;](#arrays-and-loops)
 
 ```js
 let iceCreamFlavors = [
@@ -255,7 +285,9 @@ let iceCreamFlavors = [
 iceCreamFlavors.find((flavor) => flavor === "Chocolate"); // "Chocolate"
 ```
 
-### filter()
+### filter() <a id="filter" />
+
+[&#9650;](#arrays-and-loops)
 
 ```js
 let iceCreamFlavors = [
@@ -273,7 +305,9 @@ iceCreamFlavors.filter((flavor) => flavor.type === "Chocolate");
 //  { name: "Mint Chip", type: "Chocolate"}]
 ```
 
-### some() (Check a condition)
+### some() (Check a condition) <a id="some-check-a-condition" />
+
+[&#9650;](#arrays-and-loops)
 
 ```js
 iceCreamFlavors.some((flavor) => flavor.type === "Nuts"); // true
@@ -281,7 +315,9 @@ iceCreamFlavors.some((flavor) => flavor.type === "Nuts"); // true
 iceCreamFlavors.filter((flavor) => flavor.type !== "Nuts"); // returns everything except for Pistachio.
 ```
 
-### Projections map
+### Projections map <a id="projections-map" />
+
+[&#9650;](#arrays-and-loops)
 
 ```js
 let iceCreamFlavors = [
@@ -298,7 +334,13 @@ iceCreamFlavors.map((flavor) => {
 }); // every item now has a new property price: 1
 ```
 
-### Aggregations (Accumulator and Reducer)
+### Aggregations (Accumulator and Reducer) <a id="aggregations-accumulator-and-reducer" />
+
+<Link to="../tutorials/javascript/JavaScript_5AdvancedConcepts#1-array-reduce">
+  See Advanced reduce() exmaples
+</Link>
+
+[&#9650;](#arrays-and-loops)
 
 ```js
 let sales = [
@@ -323,8 +365,6 @@ sales.reduce((acc, curr) => acc + curr.amount, 0);
 ```
 
 **Full Aggregation Example**:
-
-[See Advanced reduce(); exmaples](ReadMeAdvancedJS.md#1-reduce)
 
 ```js
 // { scoops: [], total: }
@@ -353,3 +393,7 @@ let flavorDistribution = transactions.reduce((accumulator, currValue) => {
 console.log(transactions);
 console.log(flavorDistribution);
 ```
+
+<br />
+<br />
+<br />

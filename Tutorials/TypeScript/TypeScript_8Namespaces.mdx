@@ -1,0 +1,288 @@
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import a from "../../src/Styles/MDXStyle.css";
+import { Link } from "react-router-dom";
+
+# **Organize code using TypeScript namespaces** <a id="organize-code-using-typescript-namespaces" /><Link to="../tutorials/typescript">&#8678;</Link>
+
+- [Introduction to namespaces](#introduction-to-namespaces)
+- [Organize code by using single file namespaces](#organize-code-by-using-single-file-namespaces)
+- [Organize code using nested namespaces](#organize-code-using-nested-namespaces)
+- [Defining a namespace alias](#defining-a-namespace-alias)
+- [Compiling single file namespaces](#compiling-single-file-namespaces)
+- [Organize code by using multi-file namespaces](#organize-code-by-using-multi-file-namespaces)
+- [Compiling multi-file namespaces](#compiling-multi-file-namespaces)
+- [Design considerations](#design-considerations)
+- [Exercise: Organize code with namespaces](#exercise-organize-code-with-namespaces)
+
+## Introduction to namespaces <a id="introduction-to-namespaces" />
+
+[&#9650;](#organize-code-using-typescript-namespaces)
+
+- **Namespaces** are referred to as "**internal modules**" in earlier versions of TypeScript
+- They represent a specific way to **organize and categorize** your code, enabling you to **group related code** together
+- Namespaces allow you to group variables, functions, interfaces, or classes
+- Code inside a namespace is pulled **from the global scope** and into the **scope of the namespace**
+- This can help you avoid **naming conflicts** between components
+- Reduce the amount of code in the global scope, limiting "global scope pollution."
+- Provide a context for names, which helps reduce naming collisions.
+- Enhance reusability.
+
+Example of namspaces organized in a signle **`.ts`** file:
+
+```ts
+namspace A {
+    export function functionName {
+        //code goes here
+    }
+}
+
+namspace B {
+    export function functionName {
+        //code goes here
+    }
+}
+
+let var1 = A.functionName();    //OK
+let var2 = B.functionName();    //OK
+let var3 = functionName();      //Not OK
+```
+
+## Organize code by using single file namespaces <a id="organize-code-by-using-single-file-namespaces" />
+
+[&#9650;](#organize-code-using-typescript-namespaces)
+
+```ts
+namespace Greetings {
+  export function returnGreeting(greeting: string) {
+    console.log(`The message from namespace Greetings is ${greeting}.`);
+  }
+}
+namespace GreetingsWithLength {
+  export function returnGreeting(greeting: string) {
+    let greetingLength = getLength(greeting);
+    console.log(
+      `The message from namespace GreetingsWithLength is ${greeting}. It is ${greetingLength} characters long.`
+    );
+  }
+  function getLength(message: string): number {
+    return message.length;
+  }
+}
+```
+
+```ts
+returnGreeting("Hello"); // Returns error
+Greetings.returnGreeting("Bonjour"); // OK
+GreetingsWithLength.returnGreeting("Hola"); // OK
+```
+
+## Organize code using nested namespaces <a id="organize-code-using-nested-namespaces" />
+
+[&#9650;](#organize-code-using-typescript-namespaces)
+
+```ts
+namespace AllGreetings {
+  export namespace Greetings {
+    export function returnGreeting(greeting: string) {
+      console.log(`The message from namespace Greetings is ${greeting}.`);
+    }
+  }
+  export namespace GreetingsWithLength {
+    export function returnGreeting(greeting: string) {
+      let greetingLength = getLength(greeting);
+      console.log(
+        `The message from namespace GreetingsWithLength is ${greeting}. It is ${greetingLength} characters long.`
+      );
+    }
+    function getLength(message: string): number {
+      return message.length;
+    }
+  }
+}
+```
+
+```ts
+AllGreetings.Greetings.returnGreeting("Bonjour"); // OK
+AllGreetings.GreetingsWithLength.returnGreeting("Hola"); // OK
+```
+
+## Defining a namespace alias <a id="defining-a-namespace-alias" />
+
+[&#9650;](#organize-code-using-typescript-namespaces)
+
+```ts
+import greet = AllGreetings.Greetings;
+greet.returnGreeting("Bonjour");
+```
+
+## Compiling single file namespaces <a id="compiling-single-file-namespaces" />
+
+[&#9650;](#organize-code-using-typescript-namespaces)
+
+You compile a single file namespace the **same way** that you compile **any other TypeScript file**. Because namespaces are a TypeScript-only construct.  
+They are **removed from the resulting JavaScript** code and converted into variables that nest as necessary to form namespace-like objects.
+
+## Organize code by using multi-file namespaces <a id="#organize-code-by-using-multi-file-namespaces" />
+
+[&#9650;](#organize-code-using-typescript-namespaces)
+
+- You can extend namespaces by sharing them across multiple TypeScript files.
+- When you have namespaces in multiple files that relate to each other, you must add **`reference`** tags to tell the TypeScript compiler about the relationships between the files.
+
+- When there is a reference to **more than one file**, start with the **highest-level namespace** and then work your way down. TypeScript will **use this order when compiling** the files.
+- For example, assume that you have three Typescript files:
+  - **interfaces.ts**, which declares a namespace that contains some interface definitions.
+  - **functions.ts**, which declares a namespace with functions that implement the interfaces in interfaces.ts.
+  - **main.ts**, which calls the functions in functions.ts and represents the main code of your application.
+
+To inform TypeScript of the relationship between interfaces.ts and functions.ts, you add a **`reference`** to **`interfaces.ts`** using the **`triple slash (///)`** syntax to the top of functions.ts. And then in main.ts, which has a relationship with both **`interfaces.ts`** and **`functions.ts`**, you add a reference to both files.
+
+**`interfaces.ts`**
+
+```ts
+namspace Interfaces {
+
+}
+```
+
+**`functions.ts`**
+
+```ts
+///< reference path="interfaces.ts"/>
+namspace Functions {
+    export function functionName {
+        //Code goes here
+    }
+}
+```
+
+**`main.ts`**
+
+```ts
+///< reference path="interfaces.ts"/>
+///< reference path="functions.ts"/>
+let x = Functions.functionName();
+```
+
+## Compiling multi-file namespaces <a id="compiling-multi-file-namespaces" />
+
+[&#9650;](#organize-code-using-typescript-namespaces)
+
+There are two ways to compile multiple file namespaces:
+
+- per-file compilation
+- single file compilation.
+
+1 . By default, when you run the TypeScript compiler on main.ts, it will examine the reference statements in the file and **produce one JavaScript file** for each input file. If you choose this option, use `<script>` tags on the webpage to load each emitted file **in the appropriate order**.
+
+2 . You can also instruct the compiler to produce a single JavaScript output file by using the **`--outFile`** option. In the example above, the command **`tsc --outFile main.js main.ts`** instructs the compiler to produce a single JavaScript file called main.js.
+
+## Design considerations <a id="design-considerations" />
+
+[&#9650;](#organize-code-using-typescript-namespaces)
+
+- You can use namespaces or modules for code organization, and both can contain code and declarations. **It is not recommended to combine namespaces and modules in the same project.**
+
+The following table summarizes and compares modules and namespaces.
+
+export const table1 = `
+| Module                                                                                                                                                   | Namespace                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Use modules to organize code into separate files for logical grouping of functionality.                                                                  | Use namespaces to organize code into separate files for logical grouping of functionality.                                             |
+| Modules execute in their local scope, not in the global scope.                                                                                           | Namespaces execute in their local scope, not in the global scope.                                                                      |
+| Modules are declarative; the relationships between modules are specified in terms of imports and exports at the file level.                              | Namespaces cannot declare their dependencies.                                                                                          |
+| You define a module by using either the export or import keyword within a file. Any file containing a top-level import or export is considered a module. | You define a namespace by using the namespace keyword within a file. Namespace statements can be nested and span multiple files.       |
+| To expose individual module components outside the module, use the export keyword.                                                                       | To expose individual namespace components outside of the namespace, use the export keyword.                                            |
+| To use a component from one module in another module, use the import keyword.                                                                            | To use a component from one namespace in another TypeScript file, add a reference statement using the triple-slash (///) syntax.       |
+| To compile a module and all its dependent files, use the tsc --module command.                                                                           | To compile TypeScript files containing namespaces and all their dependent files into individual JavaScript files, use the tsc command. |
+| It is not possible to have multi-file modules compiled to a single module.                                                                               | To compile all TypeScript files containing namespaces into a single JavaScript file, use the tsc --outFile command.                    |
+| Modules import another module by using a module loader API. You specify the API when you compile the module.                                             | Namespaces are loaded by specifying the .js file names (in order) using the \`<script>\` tag in the HTML page.                           |
+| In modules, you can re-export the components either using their original name or rename it.                                                              | In namespaces, you cannot re-export components or rename them.                                                                         |
+`;
+
+<Markdown remarkPlugins={[remarkGfm]}>{table1}</Markdown>
+<br />
+
+## Exercise: Organize code with namespaces <a id="exercise-organize-code-with-namespaces" />
+
+[&#9650;](#organize-code-using-typescript-namespaces)
+
+- Compile the 3 `.ts` files to a single `.js` file using the following command
+
+> `tsc --outFile main.js ns_main.ts`
+
+- Run the `ns_index.html` and check the browser console to see the result.
+
+**`PS:`**  
+Exercise stored under **src_namespaces** folder of **TypeScript Tutorial** folder
+
+**`ns_loans.ts`**
+
+```ts
+namespace Loans {
+  export interface Loan {
+    principle: number;
+    interestRate: number; //* Interest rate percentage (eg. 14 is 14%)
+  }
+  export interface ConventionalLoan extends Loan {
+    months: number; //* Total number of months
+  }
+}
+```
+
+**`ns_loan-programs.ts`**
+
+```ts
+/// <reference path="ns_loans.ts" />
+
+namespace LoanPrograms {
+  // Calculates the monthly payment of an interest only loan
+  export function calculateInterestOnlyLoanPayment(
+    loanTerms: Loans.Loan
+  ): string {
+    let payment: number;
+    payment =
+      loanTerms.principle * calculateInterestRate(loanTerms.interestRate);
+    return "The interest only loan payment is " + payment.toFixed(2);
+  }
+  // Calculates the monthly payment of a conventional loan
+  export function calculateConventionalLoanPayment(
+    loanTerms: Loans.ConventionalLoan
+  ): string {
+    let interest: number = calculateInterestRate(loanTerms.interestRate);
+    let payment: number;
+    payment =
+      (loanTerms.principle * interest) /
+      (1 - Math.pow(1 / (1 + interest), loanTerms.months));
+    return "The conventional loan payment is " + payment.toFixed(2);
+  }
+  function calculateInterestRate(interestRate: number): number {
+    let interest: number = interestRate / 1200;
+    return interest;
+  }
+}
+```
+
+**`ns_main.ts`**
+
+```ts
+/// <reference path="ns_loans.ts" />
+/// <reference path="ns_loan-programs.ts" />
+
+let interestOnlyPayment = LoanPrograms.calculateInterestOnlyLoanPayment({
+  principle: 30000,
+  interestRate: 5,
+});
+let conventionalLoanPayment = LoanPrograms.calculateConventionalLoanPayment({
+  principle: 30000,
+  interestRate: 5,
+  months: 180,
+});
+console.log(interestOnlyPayment); //* Returns "The interest only loan payment is 125.00"
+console.log(conventionalLoanPayment); //* Returns "The conventional loan payment is 237.24"
+```
+
+<br />
+<br />
+<br />

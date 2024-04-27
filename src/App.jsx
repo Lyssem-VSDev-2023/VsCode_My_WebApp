@@ -1,20 +1,71 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { agate } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
-//pages
+//#region Main Site Pages
 import LayoutV2 from "./LayoutV2";
 import Index from "./Pages/Index";
+//#endregion
+
+//#region NavBar - Pages
 import About from "./Pages/About";
 import Test from "./Pages/Test";
+//#endregion
 
-//React Works
+//#region NavBar - Tutorials Javascript
+import JavaScriptTuto from "../Tutorials/JavaScript/ReadMe.mdx";
+import JavaScriptIntro from "../Tutorials/JavaScript/JavaScript_1Intro.mdx";
+import JavaScriptFunctions from "../Tutorials/JavaScript/JavaScript_2Functions.mdx";
+import JavaScriptMakingDecisions from "../Tutorials/JavaScript/JavaScript_3MakingDecisions.mdx";
+import JavaScriptArraysAndLoops from "../Tutorials/JavaScript/JavaScript_4ArraysAndLoops.mdx";
+import JavaScriptAdvancedConcepts from "../Tutorials/JavaScript/JavaScript_5AdvancedConcepts.mdx";
+import JavaScriptJSON from "../Tutorials/JavaScript/JavaScript_6JSON.mdx";
+import JavaScriptObjects from "../Tutorials/JavaScript/JavaScript_7Objects.mdx";
+import JavaScriptAsyncAndPromises from "../Tutorials/JavaScript/JavaScript_8AsyncAndPromises.mdx";
+//#endregion
+
+//#region NavBar - Tutorials NodeJS
+import NodeJStTuto from "../Tutorials/NodeJS/ReadMe.mdx";
+import NodeJS_1InitializationAndScripts from "../Tutorials/NodeJS/NodeJS_1InitializationAndScripts.mdx";
+import NodeJS_2ConfigurePackageJSON from "../Tutorials/NodeJS/NodeJS_2ConfigurePackageJSON.mdx";
+import NodeJS_3InstallPackages from "../Tutorials/NodeJS/NodeJS_3InstallPackages.mdx";
+import NodeJS_4InstallJestPackage from "../Tutorials/NodeJS/NodeJS_4InstallJestPackage.mdx";
+import NodeJS_5ManageDependencies from "../Tutorials/NodeJS/NodeJS_5ManageDependencies.mdx";
+import NodeJS_6Debug_NodeJS from "../Tutorials/NodeJS/NodeJS_6Debug_NodeJS.mdx";
+import NodeJS_7NodeJS_Files_Directories from "../Tutorials/NodeJS/NodeJS_7NodeJS_Files_Directories.mdx";
+import NodeJS_8WebAPI_With_NodeJS from "../Tutorials/NodeJS/NodeJS_8WebAPI_With_NodeJS.mdx";
+import NodeJS_9RouteManagement from "../Tutorials/NodeJS/NodeJS_9RouteManagement.mdx";
+import NodeJS_ManageNodesVersions from "../Tutorials/NodeJS/NodeJS_ManageNodesVersions.mdx";
+//#endregion
+
+//#region NavBar - Tutorials TypeScript
+import TypeScript_Tuto from "../Tutorials/TypeScript/ReadMe.mdx";
+import TypeScript_1VariablesAndTypes from "../Tutorials/TypeScript/TypeScript_1VariablesAndTypes.mdx";
+import TypeScript_2Interfaces from "../Tutorials/TypeScript/TypeScript_2Interfaces.mdx";
+import TypeScript_3Functions from "../Tutorials/TypeScript/TypeScript_3Functions.mdx";
+import TypeScript_4Classes from "../Tutorials/TypeScript/TypeScript_4Classes.mdx";
+import TypeScript_5Generics from "../Tutorials/TypeScript/TypeScript_5Generics.mdx";
+import TypeScript_6WorkingWithModules from "../Tutorials/TypeScript/TypeScript_6WorkingWithModules.mdx";
+import TypeScript_7ExternalLibraries from "../Tutorials/TypeScript/TypeScript_7ExternalLibraries.mdx";
+import TypeScript_8Namespaces from "../Tutorials/TypeScript/TypeScript_8Namespaces.mdx";
+//#endregion
+
+//#region NavBar - Tutorials Markdown
+import Markdown_TOC from "../Tutorials/MarkDown/ReadMe.mdx";
+import Markdown_Tuto from "../Tutorials/MarkDown/MarkDown.mdx";
+//#endregion
+
+//#region SideBar - React Works (React Dev - React Router)
 import ReactDevApp from "../Works/React-Dev/src/ReactDevApp";
 import ReactRouterApp from "../Works/React-Router/src/ReactRouterApp";
+//#endregion
 
-//React Web Dev Simplified
+//#region SideBar - Web Dev Simplified - Apps
 import BudgetApp from "../Works/WebDevSimplified/Vite_React_BudgetApp/src/BudgetApp";
 import ReactQueryApp from "../Works/WebDevSimplified/Vite_React_ReactQuery_TanStackQuary/src/ReactQueryApp";
+//#endregion
 
-// React Hooks- Web Dev Simplified
+//#region SideBar - Web Dev Simplified - React Hooks Examples
 import Home from "../Works/WebDevSimplified/Vite_React_Hooks/src/Home";
 import UseStatePage from "../Works/WebDevSimplified/Vite_React_Hooks/src/UseStatePage";
 import UseEffectPage from "../Works/WebDevSimplified/Vite_React_Hooks/src/UseEffectPage";
@@ -61,13 +112,8 @@ import OnlineStatusComponent from "../Works/WebDevSimplified/Vite_React_Hooks/sr
 import RenderCountComponent from "../Works/WebDevSimplified/Vite_React_Hooks/src/UsefulCustomHooks/27-useRenderCount/RenderCountComponent";
 import DebugInformationComponent from "../Works/WebDevSimplified/Vite_React_Hooks/src/UsefulCustomHooks/28-useDebugInformation/DebugInformationComponent";
 import HoverComponent from "../Works/WebDevSimplified/Vite_React_Hooks/src/UsefulCustomHooks/29-useHover/HoverComponent";
+//#endregion
 import LongPressComponent from "../Works/WebDevSimplified/Vite_React_Hooks/src/UsefulCustomHooks/30-useLongPress.js/LongPressComponent";
-
-import JavaScriptTuto from "../Tutorials/JavaScript/ReadMe.mdx";
-import JavaScriptTutoIntro from "../Tutorials/JavaScript/JavaScript_1Intro.mdx";
-
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { agate } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 function App() {
   const mainSiteRoute = () => {
@@ -101,15 +147,16 @@ function App() {
                 <Router>
                   <Routes>
                     {/* + Layout Page **************** */}
-                    //#region Main Structure
                     <Route path="/" element={<LayoutV2 />}>
                       <Route index element={<Index />} />
-                      //#endregion
                       {/* ++ NavBar **************** */}
-                      //#region NavBar
+                      //#region NavBar Main
                       <Route path="/about" element={<About></About>}></Route>
                       <Route path="/test" element={<Test></Test>}></Route>
                       <Route path="/tutorials/*"></Route>
+                      //#endregion
+                      {/* new section */}
+                      //#region NavBar JavaScript Tutorials
                       <Route
                         path="tutorials/javascript/*"
                         element={<JavaScriptTuto></JavaScriptTuto>}
@@ -117,15 +164,242 @@ function App() {
                       <Route
                         path="tutorials/javascript/JavaScript_1Intro"
                         element={
-                          <JavaScriptTutoIntro
+                          <JavaScriptIntro
                             components={{ code }}
-                          ></JavaScriptTutoIntro>
+                          ></JavaScriptIntro>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/javascript/JavaScript_2Functions"
+                        element={
+                          <JavaScriptFunctions
+                            components={{ code }}
+                          ></JavaScriptFunctions>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/javascript/JavaScript_3MakingDecisions"
+                        element={
+                          <JavaScriptMakingDecisions
+                            components={{ code }}
+                          ></JavaScriptMakingDecisions>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/javascript/JavaScript_4ArraysAndLoops"
+                        element={
+                          <JavaScriptArraysAndLoops
+                            components={{ code }}
+                          ></JavaScriptArraysAndLoops>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/javascript/JavaScript_5AdvancedConcepts"
+                        element={
+                          <JavaScriptAdvancedConcepts
+                            components={{ code }}
+                          ></JavaScriptAdvancedConcepts>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/javascript/JavaScript_6JSON"
+                        element={
+                          <JavaScriptJSON
+                            components={{ code }}
+                          ></JavaScriptJSON>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/javascript/JavaScript_7Objects"
+                        element={
+                          <JavaScriptObjects
+                            components={{ code }}
+                          ></JavaScriptObjects>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/javascript/JavaScript_8AsyncAndPromises"
+                        element={
+                          <JavaScriptAsyncAndPromises
+                            components={{ code }}
+                          ></JavaScriptAsyncAndPromises>
+                        }
+                      ></Route>
+                      //#endregion
+                      {/* new section */}
+                      //#region NavBar NodeJS Tutorials
+                      <Route
+                        path="/tutorials/nodejs/*"
+                        element={<NodeJStTuto></NodeJStTuto>}
+                      ></Route>
+                      <Route
+                        path="tutorials/nodejs/NodeJS_1InitializationAndScripts"
+                        element={
+                          <NodeJS_1InitializationAndScripts
+                            components={{ code }}
+                          ></NodeJS_1InitializationAndScripts>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/nodejs/NodeJS_2ConfigurePackageJSON"
+                        element={
+                          <NodeJS_2ConfigurePackageJSON
+                            components={{ code }}
+                          ></NodeJS_2ConfigurePackageJSON>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/nodejs/NodeJS_3InstallPackages"
+                        element={
+                          <NodeJS_3InstallPackages
+                            components={{ code }}
+                          ></NodeJS_3InstallPackages>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/nodejs/NodeJS_4InstallJestPackage"
+                        element={
+                          <NodeJS_4InstallJestPackage
+                            components={{ code }}
+                          ></NodeJS_4InstallJestPackage>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/nodejs/NodeJS_5ManageDependencies"
+                        element={
+                          <NodeJS_5ManageDependencies
+                            components={{ code }}
+                          ></NodeJS_5ManageDependencies>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/nodejs/NodeJS_6Debug_NodeJS"
+                        element={
+                          <NodeJS_6Debug_NodeJS
+                            components={{ code }}
+                          ></NodeJS_6Debug_NodeJS>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/nodejs/NodeJS_7NodeJS_Files_Directories"
+                        element={
+                          <NodeJS_7NodeJS_Files_Directories
+                            components={{ code }}
+                          ></NodeJS_7NodeJS_Files_Directories>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/nodejs/NodeJS_8WebAPI_With_NodeJS"
+                        element={
+                          <NodeJS_8WebAPI_With_NodeJS
+                            components={{ code }}
+                          ></NodeJS_8WebAPI_With_NodeJS>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/nodejs/NodeJS_9RouteManagement"
+                        element={
+                          <NodeJS_9RouteManagement
+                            components={{ code }}
+                          ></NodeJS_9RouteManagement>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/nodejs/NodeJS_ManageNodesVersions"
+                        element={
+                          <NodeJS_ManageNodesVersions
+                            components={{ code }}
+                          ></NodeJS_ManageNodesVersions>
+                        }
+                      ></Route>
+                      //#endregion
+                      {/* new section */}
+                      //#region NavBar TypeScript Tutorials
+                      <Route
+                        path="/tutorials/typescript/*"
+                        element={<TypeScript_Tuto></TypeScript_Tuto>}
+                      ></Route>
+                      <Route
+                        path="tutorials/typescript/TypeScript_1VariablesAndTypes"
+                        element={
+                          <TypeScript_1VariablesAndTypes
+                            components={{ code }}
+                          ></TypeScript_1VariablesAndTypes>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/typescript/TypeScript_2Interfaces"
+                        element={
+                          <TypeScript_2Interfaces
+                            components={{ code }}
+                          ></TypeScript_2Interfaces>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/typescript/TypeScript_3Functions"
+                        element={
+                          <TypeScript_3Functions
+                            components={{ code }}
+                          ></TypeScript_3Functions>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/typescript/TypeScript_4Classes"
+                        element={
+                          <TypeScript_4Classes
+                            components={{ code }}
+                          ></TypeScript_4Classes>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/typescript/TypeScript_5Generics"
+                        element={
+                          <TypeScript_5Generics
+                            components={{ code }}
+                          ></TypeScript_5Generics>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/typescript/TypeScript_6WorkingWithModules"
+                        element={
+                          <TypeScript_6WorkingWithModules
+                            components={{ code }}
+                          ></TypeScript_6WorkingWithModules>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/typescript/TypeScript_7ExternalLibraries"
+                        element={
+                          <TypeScript_7ExternalLibraries
+                            components={{ code }}
+                          ></TypeScript_7ExternalLibraries>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/typescript/TypeScript_8Namespaces"
+                        element={
+                          <TypeScript_8Namespaces
+                            components={{ code }}
+                          ></TypeScript_8Namespaces>
+                        }
+                      ></Route>
+                      //#endregion
+                      {/* new section */}
+                      //#region NavBar Markdown Tutorials
+                      <Route
+                        path="/tutorials/markdown/*"
+                        element={<Markdown_TOC></Markdown_TOC>}
+                      ></Route>
+                      <Route
+                        path="tutorials/markdown/markdown"
+                        element={
+                          <Markdown_Tuto components={{ code }}></Markdown_Tuto>
                         }
                       ></Route>
                       //#endregion
                       {/* ++ SideBar **************** */}
-                      //#region Side Bar React Dev
                       {/* ------- React Dev ********** */}
+                      //#region Side Bar React Dev
                       <Route
                         path="/reactdev/*"
                         element={<ReactDevApp></ReactDevApp>}

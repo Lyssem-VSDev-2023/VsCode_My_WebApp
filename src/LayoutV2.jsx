@@ -16,7 +16,7 @@ const LayoutV2 = () => {
           <aside>
             <Sidebar></Sidebar>
           </aside>
-          <article className="p-3">
+          <article className="col p-3">
             <Outlet></Outlet>
           </article>
           <aside></aside>

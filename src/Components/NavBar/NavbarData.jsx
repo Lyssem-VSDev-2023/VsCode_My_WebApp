@@ -27,6 +27,12 @@ export const NavbarData = [
     iconOpened: upIcon,
     subNav: [
       {
+        title: "NodeJS",
+        path: "/tutorials/nodejs",
+        icon: jsIcon,
+        divider: false,
+      },
+      {
         title: "Javascript",
         path: "/tutorials/javascript",
         icon: jsIcon,
@@ -37,15 +43,18 @@ export const NavbarData = [
       // },
       {
         title: "TypeScript",
-        path: "/overview/typescript",
+        path: "/tutorials/typescript",
         icon: tsIcon,
         divider: false,
       },
       {
         title: "Markdown",
-        path: "/overview/markdown",
+        path: "/tutorials/markdown",
         icon: mdIcon,
         divider: false,
+      },
+      {
+        divider: true,
       },
       {
         title: "C-Sharp",

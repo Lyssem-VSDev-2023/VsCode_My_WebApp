@@ -291,7 +291,7 @@ sales.reduce((acc, curr) => acc + curr.amount, 0);
 
 **Full Aggregation Example**:
 
-[See Advanced reduce(); exmaples](ReadMeAdvancedJS.md#1-reduce)
+[See Advanced reduce() exmaples](ReadMeAdvancedJS.md#1-reduce)
 
 ```js
 // { scoops: [], total: }

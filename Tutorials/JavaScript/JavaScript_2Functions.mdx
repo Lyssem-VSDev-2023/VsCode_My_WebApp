@@ -1,23 +1,25 @@
-# **Javascript Functions**
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import a from "../../src/Styles/MDXStyle.css";
+import { Link } from "react-router-dom";
 
-- [**Javascript Functions**](#javascript-functions)
-  - [Functions](#functions)
-    - [Overview](#overview)
-    - [function parameters](#function-parameters)
-    - [return value](#return-value)
-    - [Simple JS function tested in a web page](#simple-js-function-tested-in-a-web-page)
-  - [Using Anonymous functions](#using-anonymous-functions)
-    - [Use a callback](#use-a-callback)
-    - [Anonymous functions](#anonymous-functions)
-    - [Arrow functions](#arrow-functions)
+# **Javascript Functions** <a id="javascript-functions"></a><Link to="../tutorials/javascript">&#8678;</Link>
 
----
+- [Functions](#functions)
+  - [Overview](#overview)
+  - [function parameters](#function-parameters)
+  - [return value](#return-value)
+  - [Simple JS function tested in a web page](#simple-js-function-tested-in-a-web-page)
+- [Using Anonymous functions](#using-anonymous-functions)
+  - [Use a callback](#use-a-callback)
+  - [Anonymous functions](#anonymous-functions)
+  - [Arrow functions](#arrow-functions)
 
-## Functions
+## Functions <a id="functions"></a>
 
 [&#9650;](#javascript-functions)
 
-### Overview
+### Overview <a id="overview"></a>
 
 - A function is free floating
 - A method is attached to an object (console, in the example console.log)
@@ -48,7 +50,7 @@ function pow(x, n) {
 }
 ```
 
-### function parameters
+### function parameters <a id="function-parameters"></a>
 
 ```js
 function displayGreeting(name) {
@@ -67,7 +69,7 @@ function displayGreeting(name, salutation = "Hello") {
 displayGreeting("Christopher", "Hi");
 ```
 
-### return value
+### return value <a id="return-value"></a>
 
 ```js
 function createGreetingMessage(name) {
@@ -77,7 +79,7 @@ function createGreetingMessage(name) {
 let greetingMessage = createGreetingMessage("Christopher");
 ```
 
-### Simple JS function tested in a web page
+### Simple JS function tested in a web page <a id="simple-js-function-tested-in-a-web-page"></a>
 
 ```js
 <!DOCTYPE html>
@@ -101,13 +103,11 @@ let greetingMessage = createGreetingMessage("Christopher");
 </html>
 ```
 
----
-
-## Using Anonymous functions
+## Using Anonymous functions <a id="using-anonymous-functions"></a>
 
 [&#9650;](#javascript-functions)
 
-### Use a callback
+### Use a callback <a id="use-a-callback"></a>
 
 ```js
 function displayDone() {
@@ -121,7 +121,7 @@ setTimeout(displayDone, 3000);
 - The function is executed at a given time,
 - Should not include perentheses () for the parameter, otherwise the function excutes immediately, or throw an error.
 
-### Anonymous functions
+### Anonymous functions <a id="anonymous-functions"></a>
 
 ```js
 setTimeout(
@@ -136,7 +136,7 @@ setTimeout(
 - The function is without a given name, and created inline
 - avoid namespace population and help when being out of naming ideas
 
-### Arrow functions
+### Arrow functions <a id="arrow-functions"></a>
 
 ```js
 setTimeout(

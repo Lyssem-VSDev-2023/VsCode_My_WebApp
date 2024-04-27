@@ -1,26 +1,30 @@
-# **Javascript and Objects**
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import a from "../../src/Styles/MDXStyle.css";
+import { Link } from "react-router-dom";
 
-- [**Javascript and Objects**](#javascript-and-objects)
-  - [Creating Objects using Literals](#creating-objects-using-literals)
-    - [Define a simple Object](#define-a-simple-object)
-    - [Add Object Attibutes](#add-object-attibutes)
-    - [Add Object Functions (Actions)](#add-object-functions-actions)
-  - [Creating Objects using Constructors](#creating-objects-using-constructors)
-    - [Define a simple Object (new)](#define-a-simple-object-new)
-    - [Add Object Attibutes (pass data)](#add-object-attibutes-pass-data)
-    - [Add Object Functions (data with Actions)](#add-object-functions-data-with-actions)
-  - [Access Objects Attributes and Functions](#access-objects-attributes-and-functions)
-    - [Access Attributes with Dot Notation](#access-attributes-with-dot-notation)
-    - [Access Attributes with Brackets Notation](#access-attributes-with-brackets-notation)
-    - [Access Methods with Dot Notation](#access-methods-with-dot-notation)
-    - [Access Methods with bracket Notation](#access-methods-with-bracket-notation)
-  - ["this" context](#this-context)
-    - [From within the Object](#from-within-the-object)
-    - [From outside the Object (globalThis)](#from-outside-the-object-globalthis)
+# **Javascript and Objects** <a id="javascript-and-objects"></a><Link to="../tutorials/javascript">&#8678;</Link>
+
+- [Creating Objects using Literals](#creating-objects-using-literals)
+  - [Define a simple Object](#define-a-simple-object)
+  - [Add Object Attibutes](#add-object-attibutes)
+  - [Add Object Functions (Actions)](#add-object-functions-actions)
+- [Creating Objects using Constructors](#creating-objects-using-constructors)
+  - [Define a simple Object (new)](#define-a-simple-object-new)
+  - [Add Object Attibutes (pass data)](#add-object-attibutes-pass-data)
+  - [Add Object Functions (data with Actions)](#add-object-functions-data-with-actions)
+- [Access Objects Attributes and Functions](#access-objects-attributes-and-functions)
+  - [Access Attributes with Dot Notation](#access-attributes-with-dot-notation)
+  - [Access Attributes with Brackets Notation](#access-attributes-with-brackets-notation)
+  - [Access Methods with Dot Notation](#access-methods-with-dot-notation)
+  - [Access Methods with bracket Notation](#access-methods-with-bracket-notation)
+- ["this" context](#this-context)
+  - [From within the Object](#from-within-the-object)
+  - [From outside the Object (globalThis)](#from-outside-the-object-globalthis)
 
 ---
 
-## Creating Objects using Literals
+## Creating Objects using Literals <a id="creating-objects-using-literals" />
 
 [&#9650;](#javascript-and-objects)
 
@@ -28,7 +32,9 @@
 - Objects have associated actions = **object METHODS**
 - Objects have associated context = **"this"**
 
-### Define a simple Object
+### Define a simple Object <a id="define-a-simple-object" />
+
+[&#9650;](#javascript-and-objects)
 
 ```js
 const blank = {};
@@ -43,7 +49,9 @@ Blank type: object
 Blank value {}
 ```
 
-### Add Object Attibutes
+### Add Object Attibutes <a id="add-object-attibutes" />
+
+[&#9650;](#javascript-and-objects)
 
 ```js
 const book = {
@@ -63,7 +71,9 @@ Book value:
  { title: '1984', author: 'George Orwell', isAvailable: false }
 ```
 
-### Add Object Functions (Actions)
+### Add Object Functions (Actions) <a id="add-object-functions-actions" />
+
+[&#9650;](#javascript-and-objects)
 
 ```js
 const book = {
@@ -95,7 +105,9 @@ Book value:
 }
 ```
 
-## Creating Objects using Constructors
+## Creating Objects using Constructors <a id="creating-objects-using-constructors" />
+
+[&#9650;](#javascript-and-objects)
 
 We created objects above using OBJECT LITERALS (it is literally defined and created at once). Now we can look at using CONSTRUCTORS.  
 **Constructors** are like "templates" for an object:
@@ -103,7 +115,9 @@ We created objects above using OBJECT LITERALS (it is literally defined and crea
 - they explain HOW the object is created
 - to actually create an instance use "new"
 
-### Define a simple Object (new)
+### Define a simple Object (new) <a id="define-a-simple-object-new" />
+
+[&#9650;](#javascript-and-objects)
 
 ```js
 const book = new Object();
@@ -121,7 +135,9 @@ Book value:
  {}
 ```
 
-### Add Object Attibutes (pass data)
+### Add Object Attibutes (pass data) <a id="add-object-attibutes-pass-data" />
+
+[&#9650;](#javascript-and-objects)
 
 ```js
 const data = { title: "1984", author: "George Orwell" };
@@ -139,7 +155,9 @@ Book value:
  { title: '1984', author: 'George Orwell', isAvailable: false }
 ```
 
-### Add Object Functions (data with Actions)
+### Add Object Functions (data with Actions) <a id="add-object-functions-data-with-actions" />
+
+[&#9650;](#javascript-and-objects)
 
 ```js
 const dataFunc = {
@@ -174,9 +192,13 @@ Book2 value:
 }
 ```
 
-## Access Objects Attributes and Functions
+## Access Objects Attributes and Functions <a id="access-objects-attributes-and-functions" />
 
-### Access Attributes with Dot Notation
+[&#9650;](#javascript-and-objects)
+
+### Access Attributes with Dot Notation <a id="access-attributes-with-dot-notation" />
+
+[&#9650;](#javascript-and-objects)
 
 ```js
 console.log(book2.author);
@@ -184,7 +206,9 @@ book2.author = "G. Orwell";
 console.log(book2);
 ```
 
-### Access Attributes with Brackets Notation
+### Access Attributes with Brackets Notation <a id="access-attributes-with-brackets-notation" />
+
+[&#9650;](#javascript-and-objects)
 
 ```js
 console.log(book2["author"]);
@@ -192,7 +216,9 @@ book2["author"] = "G. Orwell";
 console.log(book2);
 ```
 
-### Access Methods with Dot Notation
+### Access Methods with Dot Notation <a id="access-methods-with-dot-notation" />
+
+[&#9650;](#javascript-and-objects)
 
 ```js
 console.log(book2.isAvailable);
@@ -200,7 +226,9 @@ book2.checkOut();
 console.log(book2);
 ```
 
-### Access Methods with bracket Notation
+### Access Methods with bracket Notation <a id="access-methods-with-bracket-notation" />
+
+[&#9650;](#javascript-and-objects)
 
 ```js
 console.log(book2.isAvailable);
@@ -208,9 +236,13 @@ book2["checkOut"]();
 console.log(book2);
 ```
 
-## "this" context
+## "this" context <a id="this-context" />
 
-### From within the Object
+[&#9650;](#javascript-and-objects)
+
+### From within the Object <a id="from-within-the-object" />
+
+[&#9650;](#javascript-and-objects)
 
 ```js
 const bookObj = {
@@ -229,7 +261,9 @@ this is:  { checkIn: [Function: checkIn] }
 true
 ```
 
-### From outside the Object (globalThis)
+### From outside the Object (globalThis) <a id="from-outside-the-object-globalthis" />
+
+[&#9650;](#javascript-and-objects)
 
 ```js
 function anotherCheckIn() {
@@ -277,3 +311,7 @@ this is:  <ref *1> Object [global] {
   fetch: [AsyncFunction: fetch]
 }
 ```
+
+<br />
+<br />
+<br />

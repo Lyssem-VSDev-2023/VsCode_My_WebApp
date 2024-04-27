@@ -1,17 +1,21 @@
-# **Javascript and JSON**
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import a from "../../src/Styles/MDXStyle.css";
+import { Link } from "react-router-dom";
 
-- [**Javascript and JSON**](#javascript-and-json)
-  - [Javascript Objects/Data](#javascript-objectsdata)
-  - [Stringify - Convert Objects to JSON](#stringify---convert-objects-to-json)
-    - [JSON.stringify - Object Input](#jsonstringify---object-input)
-    - [JSON.stringify - Collection Input](#jsonstringify---collection-input)
-  - [Parse JSON - Convert back to Obejcts](#parse-json---convert-back-to-obejcts)
-    - [JSON.parse - string Input](#jsonparse---string-input)
-    - [JSON.parse - collection string Input](#jsonparse---collection-string-input)
+# **Javascript and JSON** <a id="javascript-and-json"></a><Link to="../tutorials/javascript">&#8678;</Link>
+
+- [Javascript Objects/Data](#javascript-objectsdata)
+- [Stringify - Convert Objects to JSON](#stringify---convert-objects-to-json)
+  - [JSON.stringify - Object Input](#jsonstringify---object-input)
+  - [JSON.stringify - Collection Input](#jsonstringify---collection-input)
+- [Parse JSON - Convert back to Obejcts](#parse-json---convert-back-to-obejcts)
+  - [JSON.parse - string Input](#jsonparse---string-input)
+  - [JSON.parse - collection string Input](#jsonparse---collection-string-input)
 
 ---
 
-## Javascript Objects/Data
+## Javascript Objects/Data <a id="javascript-objectsdata" />
 
 [&#9650;](#javascript-and-json)
 
@@ -55,7 +59,7 @@ object
 ]
 ```
 
-## Stringify - Convert Objects to JSON
+## Stringify - Convert Objects to JSON <a id="stringify---convert-objects-to-json" />
 
 [&#9650;](#javascript-and-json)
 
@@ -67,7 +71,9 @@ rely on simple text formats for request/response
 **JSON = JavaScript Object Notation**  
 Convert JavaScript objects and arrays to/from text (string) format
 
-### JSON.stringify - Object Input
+### JSON.stringify - Object Input <a id="jsonstringify---object-input" />
+
+[&#9650;](#javascript-and-json)
 
 ```js
 const book = new Object({ title: "1984", author: "George Orwell" });
@@ -83,7 +89,9 @@ string
 {"title":"1984","author":"George Orwell"}
 ```
 
-### JSON.stringify - Collection Input
+### JSON.stringify - Collection Input <a id="jsonstringify---collection-input" />
+
+[&#9650;](#javascript-and-json)
 
 ```js
 const myBooks = [
@@ -109,11 +117,13 @@ string
 ]
 ```
 
-## Parse JSON - Convert back to Obejcts
+## Parse JSON - Convert back to Obejcts <a id="parse-json---convert-back-to-obejcts" />
 
 [&#9650;](#javascript-and-json)
 
-### JSON.parse - string Input
+### JSON.parse - string Input <a id="jsonparse---string-input" />
+
+[&#9650;](#javascript-and-json)
 
 ```js
 let data = bookJSON;
@@ -133,7 +143,9 @@ isArray: false
 Num items: undefined
 ```
 
-### JSON.parse - collection string Input
+### JSON.parse - collection string Input <a id="jsonparse---collection-string-input" />
+
+[&#9650;](#javascript-and-json)
 
 ```js
 data = myBooksJSON;
@@ -157,3 +169,7 @@ parsed type is: object
 Num items: 4
 Author of 2nd book: Michelle Obama
 ```
+
+<br />
+<br />
+<br />
