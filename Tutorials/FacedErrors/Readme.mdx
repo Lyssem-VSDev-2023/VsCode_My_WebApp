@@ -1,0 +1,88 @@
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import a from "../../src/Styles/MDXStyle.css";
+import { Link } from "react-router-dom";
+
+# **Faced Errors**<a id="h"></a>
+
+- [Javascript](#a)
+  - [**\_\_dirname is not defined in ES module scope**](#a1)
+  - [**Error \[ERR_REQUIRE_ESM\]: require() of ES Module not supported**](#a2)
+
+---
+
+## Javascript <a id="a" />
+
+[&#9650;](#h)
+
+### **\_\_dirname is not defined in ES module scope** <a id="a1" />
+
+[&#9650;](#h)
+
+export const table1 = `
+| Language | Description                                                                                                                           |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| JS       | if you use it inside an ES module, you can’t use this, as the infamous "&#92;_&#92;_dirname is not defined in ES module scope" error shows up |
+`;
+
+<Markdown remarkPlugins={[remarkGfm]}>{table1}</Markdown>
+<br />
+
+**Solution:**
+
+```js
+import path from "path";
+import { fileURLToPath } from "url";
+
+//Then you can replicate the functionality of __dirname in this way:
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+```
+
+---
+
+### **Error [ERR_REQUIRE_ESM]: require() of ES Module not supported** <a id="a2" />
+
+[&#9650;](#h)
+
+export const table2 = `
+| Language | Description                                                                                                                                                                                                                                                                                                                                                                    |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| JS       | The error "[ERR_REQUIRE_ESM]: require() of ES Module not supported. Instead change the **\`require\`** of \`index.js\` to a **\`dynamic\`** \`import()\` which is available in all \`CommonJS\` modules" occurs because a package you are importing has **been converted** to an **ESM-only** package, which means that the package **cannot be imported** with **\`require()\`** anymore. |
+
+`;
+
+<Markdown remarkPlugins={[remarkGfm]}>{table2}</Markdown>
+<br />
+
+**Solution:**
+
+- Use ESM - use **`import foo from 'foo'`**, instead of **`const foo = require('foo')`**
+- add the following line to your **`package.json`** file: **`"type": "module"`**.
+
+> **`package.json`**
+
+```json
+{
+  "type": "module",
+  // ...
+  "scripts": {},
+  "dependencies": {}
+}
+```
+
+> **`index.js`**
+
+```js
+{
+  // 👇️ for default imports
+  import foo from "foo";
+
+  // 👇️ for named imports
+  import { bar } from "bar";
+}
+```
+
+<br />
+<br />
+<br />

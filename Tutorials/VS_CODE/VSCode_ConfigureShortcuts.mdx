@@ -1,0 +1,109 @@
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import a from "../../src/Styles/MDXStyle.css";
+import { Link } from "react-router-dom";
+
+# **VSCode Shortcuts** <a id="h"></a><Link to="../generics/vscode">&#8678;</Link>
+
+- [Code - Comment & Format](#a)
+- [Code - Indent](#aa)
+- [Code - Line Copy](#aaa)
+- [HTML and Explorer](#aaaa)
+- [Markdown](#aaaaa)
+
+---
+
+{" "}
+
+<a
+  href="../../Tutorials/VS_CODE/vscode keyboard-shortcuts-windows.pdf"
+  download
+>
+  {" "}
+  ![](/Tutorials/VS_CODE/Images/downpdf24.png) Download Full VSCode Shortcuts
+</a>
+---
+
+### **`Code - Comment & Format`** <a id="a" />
+
+[&#9650;](#h)
+
+export const table1 = `
+| Function|Shortcut            | Standard   | Comment  |
+| ----------------------------- | :-------------------: | :----------: | :--------: |
+| Comment                       | Ctl K + Ctl C       | Yes        | All      |
+| Uncomment                     | Ctl K + Ctl U       | Yes        | All      |
+| Format Code                   | Ctl K + Ctl F       | Yes        | All      |
+| Format Code                   | Alt + Shift F       | Yes        | All      |
+| Save Without Formatting       | Ctl K + Shift Ctl S | Yes        | All      |
+`;
+
+<Markdown remarkPlugins={[remarkGfm]}>{table1}</Markdown>
+<br />
+
+### **`Code - Indent`**<a id="aa" />
+
+[&#9650;](#h)
+
+export const table2 = `
+| Function|Shortcut            | Standard   | Comment  |
+| ----------------------------- | :-------------------: | :----------: | :--------: |
+| **\`Code - Indent\`**           |                     |            |          |
+| Indent Line                   | Tab                 | Yes        | All      |
+| Indent Line                   | Ctl I + Ctl I       | Manual     | All      |
+| Outdent Line                  | Shift + Tab         | Yes        | All      |
+| Outdent Line                  | Ctl O + Ctl O       | Manual     | All      |
+`;
+
+<Markdown remarkPlugins={[remarkGfm]}>{table2}</Markdown>
+<br />
+
+### **`Code - Line Copy`**<a id="aaa" />
+
+[&#9650;](#h)
+
+export const table3 = `
+| Function|Shortcut            | Standard   | Comment  |
+| ----------------------------- | :-------------------: | :----------: | :--------: |
+| Move Line Up                  | Alt + Up            | Yes        | All      |
+| Move Line Down                | Alt + Down          | Yes        | All      |
+| Copy Line Up                  | Shift + Alt + Up    | Yes        | All      |
+| Copy Line Down                | Shift + Alt + Down  | Yes        | All      |
+| Delete Line                   | Shift + Ctl + K     | Yes        | All      |
+`;
+
+<Markdown remarkPlugins={[remarkGfm]}>{table3}</Markdown>
+<br />
+
+### **`HTML and Explorer`**<a id="aaaa" />
+
+[&#9650;](#h)
+
+export const table4 = `
+| Function|Shortcut            | Standard   | Comment  |
+| ----------------------------- | :-------------------: | :----------: | :--------: |
+| Create HTML Document          | ! then Tab          | Yes        | HTML     |
+| Edge DOM Inspector            | Ctl + Shift + I     | Yes        | Edge     |
+`;
+
+<Markdown remarkPlugins={[remarkGfm]}>{table4}</Markdown>
+<br />
+
+### **`Markdown`** <a id="aaaaa" />
+
+[&#9650;](#h)
+
+export const table5 = `
+| Function|Shortcut            | Standard   | Comment  |
+| ----------------------------- | :-------------------: | :----------: | :--------: |
+|             |                     |            |          |
+| Inline Code                   | Ctl M + Ctl I       | MarkdownIt | MarkDown |
+| Block Code                    | Ctl M + Ctl C       | MarkdownIt | MarkDown |
+`;
+
+<Markdown remarkPlugins={[remarkGfm]}>{table5}</Markdown>
+<br />
+
+<br />
+<br />
+<br />

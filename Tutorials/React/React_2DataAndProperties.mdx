@@ -1,19 +1,23 @@
-# **Working with data and properties in React**
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import a from "../../src/Styles/MDXStyle.css";
+import { Link } from "react-router-dom";
 
-- [**Working with data and properties in React**](#working-with-data-and-properties-in-react)
-  - [Props](#props)
-  - [Create a Component with Props](#create-a-component-with-props)
-  - [Ternary and JSX](#ternary-and-jsx)
-  - [Use complex data types as props](#use-complex-data-types-as-props)
-  - [Use map to display data inside an array](#use-map-to-display-data-inside-an-array)
-  - [Access the index to generate a key](#access-the-index-to-generate-a-key)
-  - [map with React](#map-with-react)
-  - [Display list data](#display-list-data)
-  - [Challenge](#challenge)
+# **Working with data and properties in React** <a id="working-with-data-and-properties-in-react"></a><Link to="../tutorials/react">&#8678;</Link>
+
+- [Props](#props)
+- [Create a Component with Props](#create-a-component-with-props)
+- [Ternary and JSX](#ternary-and-jsx)
+- [Use complex data types as props](#use-complex-data-types-as-props)
+- [Use map to display data inside an array](#use-map-to-display-data-inside-an-array)
+- [Access the index to generate a key](#access-the-index-to-generate-a-key)
+- [map with React](#map-with-react)
+- [Display list data](#display-list-data)
+- [Challenge](#challenge)
 
 ---
 
-## Props
+## Props <a id="props" />
 
 [&#9650;](#working-with-data-and-properties-in-react)
 
@@ -21,7 +25,7 @@
 
 **`props`** are **read-only** values available to a single instance of a component. They can be set **programmatically** or with the **same syntax** you use when **setting attributes for HTML** elements. Unlike normal `HTML`, **`props`** aren't limited to strings or primitive values; they can be **`complex objects or arrays`**. props is available as a property of **`this`** inside a component. props can contain as many properties as your component needs, and is capable of storing objects or any other data type.
 
-## Create a Component with Props
+## Create a Component with Props <a id="create-a-component-with-props" />
 
 [&#9650;](#working-with-data-and-properties-in-react)
 
@@ -33,15 +37,15 @@ Refer to the following folder for the exercise files:
 Modify the **`RecipeTitle.jsx`** as follows:
 
 ```js
-import React from 'react';
+import React from "react";
 
 function RecipeTitle(props) {
-    return (
-        <section>
-            <h2>{ props.title }</h2>
-        </section>
-    )
-};
+  return (
+    <section>
+      <h2>{props.title}</h2>
+    </section>
+  );
+}
 
 export default RecipeTitle;
 ```
@@ -49,45 +53,45 @@ export default RecipeTitle;
 To use the component with props, modify the **`App.jsx`** as follows:
 
 ```js
-import RecipeTitle from './RecipeTitle'
+import RecipeTitle from "./RecipeTitle";
 
 const recipe = {
-        title: 'Mashed potatoes',
-        feedback: {
-            rating: 4.8,
-            reviews: 20
-        },
-        ingredients: [
-            { name: '3 potatoes, cut into 1/2" pieces', prepared: false },
-            { name: '4 Tbsp butter', prepared: false },
-            { name: '1/8 cup heavy cream', prepared: false },
-            { name: 'Salt', prepared: true },
-            { name: 'Pepper', prepared: true },
-        ],
-    };
+  title: "Mashed potatoes",
+  feedback: {
+    rating: 4.8,
+    reviews: 20,
+  },
+  ingredients: [
+    { name: '3 potatoes, cut into 1/2" pieces', prepared: false },
+    { name: "4 Tbsp butter", prepared: false },
+    { name: "1/8 cup heavy cream", prepared: false },
+    { name: "Salt", prepared: true },
+    { name: "Pepper", prepared: true },
+  ],
+};
 ```
 
 Then add the **`RecipeTitle`** component
 
 ```js
-<RecipeTitle title={ recipe.title } />
+<RecipeTitle title={recipe.title} />
 ```
 
-## Ternary and JSX
+## Ternary and JSX <a id="ternary-and-jsx" />
 
 [&#9650;](#working-with-data-and-properties-in-react)
 
 - You can take advantage of **`Ternary syntax`** to determine how values should be **displayed**. If you want to dynamically set the `class` of an `HTML` element based on a **value**, you can use the following:
 
 ```js
-<div className={ isComplete ? 'done' : 'normal' }>{ value }</div>
+<div className={isComplete ? "done" : "normal"}>{value}</div>
 ```
 
 **`Note:`**
 
 You might notice the attribute used is **`className`** rather than **`class`**. This is because the word **`class`** is **reserved** in `JavaScript`. To avoid confusing the runtime, use **`className`** instead.
 
-## Use complex data types as props
+## Use complex data types as props <a id="use-complex-data-types-as-props" />
 
 [&#9650;](#working-with-data-and-properties-in-react)
 
@@ -95,17 +99,17 @@ Crate a new file **`RecipeTitle.css`**
 
 ```css
 .red {
-    color: red;
+  color: red;
 }
 .green {
-    color: green;
+  color: green;
 }
 ```
 
 Update **`RecipeTitle.jsx`**
 
 ```js
-import './RecipeTitle.css';
+import "./RecipeTitle.css";
 ```
 
 Then add this code under the **`H2`** tag:
@@ -122,7 +126,7 @@ Then add this code under the **`H2`** tag:
 <RecipeTitle title={ recipe.title } feedback={ recipe.feedback } />
 ```
 
-## Use map to display data inside an array
+## Use map to display data inside an array <a id="use-map-to-display-data-inside-an-array" />
 
 [&#9650;](#working-with-data-and-properties-in-react)
 
@@ -138,7 +142,7 @@ Then use **`map`**. **`map`** accepts a `function` with a `single parameter`. Th
 
 ```js
 const squared = numbers.map((number) => {
-    return number * number;
+  return number * number;
 });
 ```
 
@@ -149,7 +153,7 @@ console.log(squared);
 // Output: [4, 25, 64]
 ```
 
-## Access the index to generate a key
+## Access the index to generate a key <a id="access-the-index-to-generate-a-key" />
 
 [&#9650;](#working-with-data-and-properties-in-react)
 
@@ -159,24 +163,22 @@ When you use **`map`**, you can access the **`index`** by using a **second param
 
 ```js
 const squared = numbers.map((number, index) => {
-    console.log(`Processing item ${index + 1}`);
-    return number * number;
+  console.log(`Processing item ${index + 1}`);
+  return number * number;
 });
 ```
 
-## map with React
+## map with React <a id="map-with-react" />
 
 [&#9650;](#working-with-data-and-properties-in-react)
 
 ```js
 const squared = numbers.map((number, index) => {
-    return (
-        <div key={index}>{ number * number }</div>
-    );
+  return <div key={index}>{number * number}</div>;
 });
 ```
 
-## Display list data
+## Display list data <a id="display-list-data" />
 
 [&#9650;](#working-with-data-and-properties-in-react)
 
@@ -191,27 +193,23 @@ Add **`IngredientList.css`** to the app
 Create the component **`IngredientList.jsx`**
 
 ```js
-import './IngredientList.css'
-import React from 'react';
+import "./IngredientList.css";
+import React from "react";
 
 function IngredientList(props) {
-    // Create the list items using map
-    const ingredientListItems = props.ingredients.map((ingredient, index) => {
-        return (
-            // Return the desired HTML for each ingredient
-            <li key={index} className={ ingredient.prepared ? 'prepared' : '' }>
-                { ingredient.name }
-            </li>
-        );
-    });
-
-    // return the HTML for the component
-    // ingredientListItems will be rendered as li elements
+  // Create the list items using map
+  const ingredientListItems = props.ingredients.map((ingredient, index) => {
     return (
-        <ul>
-            { ingredientListItems }
-        </ul>
+      // Return the desired HTML for each ingredient
+      <li key={index} className={ingredient.prepared ? "prepared" : ""}>
+        {ingredient.name}
+      </li>
     );
+  });
+
+  // return the HTML for the component
+  // ingredientListItems will be rendered as li elements
+  return <ul>{ingredientListItems}</ul>;
 }
 
 export default IngredientList;
@@ -222,7 +220,7 @@ Update **`App.jsx`** to use **`IngredientList.jsx`** component to deplay the lis
 Add the import:
 
 ```js
-import IngredientList from './IngredientList'
+import IngredientList from "./IngredientList";
 ```
 
 Add **`IngredientList`** component
@@ -231,7 +229,7 @@ Add **`IngredientList`** component
 <IngredientList ingredients={recipe.ingredients} />
 ```
 
-## Challenge
+## Challenge <a id="challenge" />
 
 [&#9650;](#working-with-data-and-properties-in-react)
 
@@ -252,27 +250,20 @@ The recipe steps are as follows:
 
 Add a **`IngredientSteps.jsx`** file
 
-import React from 'react';
+import React from "react";
 
 ```js
 function IngredientSteps(props) {
+  const ingredientStepsItems = props.steps.map((step, index) => {
+    return <li key={index}>{step.step}</li>;
+  });
 
-    const ingredientStepsItems = props.steps.map((step, index) => {
-        return (
-            <li key={index}>
-                { step.step }
-            </li>
-        );
-    });
-
-    return (
-        <div>
-            <h3>Recipie Steps</h3>
-            <ol>
-                { ingredientStepsItems }
-            </ol>
-        </div>
-    );
+  return (
+    <div>
+      <h3>Recipie Steps</h3>
+      <ol>{ingredientStepsItems}</ol>
+    </div>
+  );
 }
 
 export default IngredientSteps;
@@ -281,28 +272,32 @@ export default IngredientSteps;
 Update the **`App.jsx`** by importing the **`IngredientSteps`** component:
 
 ```js
-import IngredientSteps from './IngredientSteps';
+import IngredientSteps from "./IngredientSteps";
 ```
 
 Update the **`App.jsx`** by adding an array of the steps:
 
 ```js
 const mySteps = {
-        steps: [
-            {step: 'Add cut potatoes to a pot of heavily salted water.'},
-            {step: 'Bring pot to a boil.'},
-            {step: 'Boil the potatoes until fork tender, about 15-20 minutes.'},
-            {step: 'Strain the potatoes.'},
-            {step: 'Return potatoes to pot.'},
-            {step: 'Add butter, cream, salt, and pepper to taste.'},
-            {step: 'Mash potatoes.'},
-            {step: 'Reseason and add butter and cream as desired.'}
-        ],
-    };
+  steps: [
+    { step: "Add cut potatoes to a pot of heavily salted water." },
+    { step: "Bring pot to a boil." },
+    { step: "Boil the potatoes until fork tender, about 15-20 minutes." },
+    { step: "Strain the potatoes." },
+    { step: "Return potatoes to pot." },
+    { step: "Add butter, cream, salt, and pepper to taste." },
+    { step: "Mash potatoes." },
+    { step: "Reseason and add butter and cream as desired." },
+  ],
+};
 ```
 
-Update the **`App.jsx`** by including  **`IngredientSteps`** component and passing the array:
+Update the **`App.jsx`** by including **`IngredientSteps`** component and passing the array:
 
 ```js
 <IngredientSteps steps={mySteps.steps} />
 ```
+
+<br />
+<br />
+<br />

@@ -48,6 +48,13 @@ export const NavbarData = [
         divider: false,
       },
       {
+        title: "React",
+        path: "/tutorials/react",
+        icon: tsIcon,
+        divider: false,
+      },
+
+      {
         title: "Markdown",
         path: "/tutorials/markdown",
         icon: mdIcon,
@@ -77,11 +84,23 @@ export const NavbarData = [
         icon: vscodeIcon,
         divider: false,
       },
+      {
+        title: "Packages & Utilities",
+        path: "/generics/utils",
+        icon: vscodeIcon,
+        divider: false,
+      },
+      {
+        title: "Faced Errors",
+        path: "/generics/errors",
+        icon: vscodeIcon,
+        divider: false,
+      },
     ],
   },
   {
-    title: "Toolkits ",
-    path: "/toolkits",
+    title: "ToolKits ",
+    path: "/toolKits",
     icon: <PiIcons.PiBooksDuotone />,
     iconClosed: downIcon,
     iconOpened: upIcon,

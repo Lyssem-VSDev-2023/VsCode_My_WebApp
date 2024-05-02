@@ -12,6 +12,18 @@
       "skipFiles": ["<node_internals>/**"],
       //"program": "${workspaceFolder}\\Tutorials\\NodeJS\\exercise5_DebugNodeJS_2\\currency.js"
       "program": "${workspaceFolder}\\Tutorials\\NodeJS\\exercise3_manage_dependency_updates\\depend_index.js"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Vite MyWebApp",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/src",
+      "sourceMapPathOverrides": {
+        "webpack:///./src/*": "${webRoot}/*"
+      },
+      "runtimeArgs": ["--remote-debugging-port=9222"],
+      "sourceMaps": true
     }
   ]
 }

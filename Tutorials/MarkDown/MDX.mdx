@@ -1,0 +1,81 @@
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import a from "../../src/Styles/MDXStyle.css";
+import { Link } from "react-router-dom";
+
+import MDXApp from "./MDXComponent/MDXApp";
+
+# **React Markdown - MDX** <a id="md"></a><Link to="../tutorials/markdown">&#8678;</Link>
+
+## Intro
+
+Simply mixing Mark down and JSX in the same document.
+
+Here is an exmaple:
+
+{/* <Button to test> */}
+
+**`SubMDXSample.jsx`**
+
+```js
+import React from "react";
+
+function SubMDXSample() {
+  return (
+    <>
+      <hr />
+      <div>This is a sub component JSX in the MDX File</div>
+      <hr />
+    </>
+  );
+}
+
+export default SubMDXSample;
+```
+
+**`Sample.md`**
+
+```md
+# Hello World from md file
+
+This is an md **example**
+```
+
+**`Sample.mdx`**
+
+```md
+import SubMDXSample from "./SubMDXSample";
+
+# Hello World from mdx file
+
+**This is an mdx example**
+
+<SubMDXSample />
+```
+
+**`MDXApp.jsx`**
+
+```js
+import Sample from "./Sample.mdx";
+import SampleMD from "./Sample.md";
+
+function MDXApp() {
+  return (
+    <>
+      <div>Test MDX Page</div>
+      <Sample></Sample>
+      <SampleMD></SampleMD>
+    </>
+  );
+}
+
+export default MDXApp;
+```
+
+### **`Rendered result`** from "./MDXComponent/MDXApp"
+
+<MDXApp />
+
+<br />
+<br />
+<br />

@@ -50,9 +50,34 @@ import TypeScript_7ExternalLibraries from "../Tutorials/TypeScript/TypeScript_7E
 import TypeScript_8Namespaces from "../Tutorials/TypeScript/TypeScript_8Namespaces.mdx";
 //#endregion
 
+//#region NavBar - Tutorials React
+import React_Tuto from "../Tutorials/React/ReadMe.mdx";
+import React_1Intro from "../Tutorials/React/React_1Intro.mdx";
+import React_2DataAndProperties from "../Tutorials/React/React_2DataAndProperties.mdx";
+import React_3StateAndEvents from "../Tutorials/React/React_3StateAndEvents.mdx";
+import React_4GetRouteParameters from "../Tutorials/React/React_4GetRouteParameters.mdx";
+import React_5CreateAReactTypeScriptApp from "../Tutorials/React/React_5CreateAReactTypeScriptApp.mdx";
+//#endregion
+
 //#region NavBar - Tutorials Markdown
 import Markdown_TOC from "../Tutorials/MarkDown/ReadMe.mdx";
 import Markdown_Tuto from "../Tutorials/MarkDown/MarkDown.mdx";
+import Markdown_MDX from "../Tutorials/MarkDown/MDX.mdx";
+//#endregion
+
+//#region NavBar - Generics VSCode
+import VSCode_TOC from "../Tutorials/VS_CODE/Readme.mdx";
+import VSCode_1InitializationAndScripts from "../Tutorials/VS_CODE/VSCode_1InitializationAndScripts.mdx";
+import VSCode_ConfigureShortcuts from "../Tutorials/VS_CODE/VSCode_ConfigureShortcuts.mdx";
+import VSCode_ConfigureSnippets from "../Tutorials/VS_CODE/VSCode_ConfigureSnippets.mdx";
+import VSCode_NpmUninstallPackage from "../Tutorials/VS_CODE/VSCode_NpmUninstallPackage.mdx";
+import VSCode_NpmInstallTypeScript from "../Tutorials/VS_CODE/VSCode_NpmInstallTypeScript.mdx";
+import VSCode_NpmMarkdownIt from "../Tutorials/VS_CODE/VSCode_NpmMarkdownIt.mdx";
+import VSCode_GitHubAddSourceControl from "../Tutorials/VS_CODE/VSCode_GitHubAddSourceControl.mdx";
+//#endregion
+
+//#region NavBar - Generics Errors
+import Errors_TOC from "../Tutorials/FacedErrors/Readme.mdx";
 //#endregion
 
 //#region SideBar - React Works (React Dev - React Router)
@@ -156,7 +181,7 @@ function App() {
                       <Route path="/tutorials/*"></Route>
                       //#endregion
                       {/* new section */}
-                      //#region NavBar JavaScript Tutorials
+                      //#region NavBar Tutorials JavaScript
                       <Route
                         path="tutorials/javascript/*"
                         element={<JavaScriptTuto></JavaScriptTuto>}
@@ -227,7 +252,7 @@ function App() {
                       ></Route>
                       //#endregion
                       {/* new section */}
-                      //#region NavBar NodeJS Tutorials
+                      //#region NavBar Tutorials NodeJS
                       <Route
                         path="/tutorials/nodejs/*"
                         element={<NodeJStTuto></NodeJStTuto>}
@@ -314,7 +339,7 @@ function App() {
                       ></Route>
                       //#endregion
                       {/* new section */}
-                      //#region NavBar TypeScript Tutorials
+                      //#region NavBar Tutorials TypeScript
                       <Route
                         path="/tutorials/typescript/*"
                         element={<TypeScript_Tuto></TypeScript_Tuto>}
@@ -385,15 +410,138 @@ function App() {
                       ></Route>
                       //#endregion
                       {/* new section */}
-                      //#region NavBar Markdown Tutorials
+                      //#region NavBar Tutorials React
                       <Route
-                        path="/tutorials/markdown/*"
+                        path="/tutorials/react/*"
+                        element={<React_Tuto></React_Tuto>}
+                      ></Route>
+                      <Route
+                        path="tutorials/react/React_1Intro"
+                        element={
+                          <React_1Intro components={{ code }}></React_1Intro>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/react/React_2DataAndProperties"
+                        element={
+                          <React_2DataAndProperties
+                            components={{ code }}
+                          ></React_2DataAndProperties>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/react/React_3StateAndEvents"
+                        element={
+                          <React_3StateAndEvents
+                            components={{ code }}
+                          ></React_3StateAndEvents>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/react/React_4GetRouteParameters"
+                        element={
+                          <React_4GetRouteParameters
+                            components={{ code }}
+                          ></React_4GetRouteParameters>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/react/React_5CreateAReactTypeScriptApp"
+                        element={
+                          <React_5CreateAReactTypeScriptApp
+                            components={{ code }}
+                          ></React_5CreateAReactTypeScriptApp>
+                        }
+                      ></Route>
+                      //#endregion
+                      {/* new section */}
+                      //#region NavBar Tutorials Markdown
+                      <Route
+                        path="/generics/markdown/*"
                         element={<Markdown_TOC></Markdown_TOC>}
                       ></Route>
                       <Route
                         path="tutorials/markdown/markdown"
                         element={
                           <Markdown_Tuto components={{ code }}></Markdown_Tuto>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/markdown/mdx"
+                        element={
+                          <Markdown_MDX components={{ code }}></Markdown_MDX>
+                        }
+                      ></Route>
+                      //#endregion
+                      {/* new section */}
+                      //#region NavBar Generics VSCode
+                      <Route
+                        path="/generics/vscode/*"
+                        element={<VSCode_TOC></VSCode_TOC>}
+                      ></Route>
+                      <Route
+                        path="generics/vscode/init"
+                        element={
+                          <VSCode_1InitializationAndScripts
+                            components={{ code }}
+                          ></VSCode_1InitializationAndScripts>
+                        }
+                      ></Route>{" "}
+                      <Route
+                        path="generics/vscode/shortcuts"
+                        element={
+                          <VSCode_ConfigureShortcuts
+                            components={{ code }}
+                          ></VSCode_ConfigureShortcuts>
+                        }
+                      ></Route>
+                      <Route
+                        path="generics/vscode/snippets"
+                        element={
+                          <VSCode_ConfigureSnippets
+                            components={{ code }}
+                          ></VSCode_ConfigureSnippets>
+                        }
+                      ></Route>
+                      <Route
+                        path="generics/vscode/uninstall"
+                        element={
+                          <VSCode_NpmUninstallPackage
+                            components={{ code }}
+                          ></VSCode_NpmUninstallPackage>
+                        }
+                      ></Route>
+                      <Route
+                        path="generics/vscode/npmts"
+                        element={
+                          <VSCode_NpmInstallTypeScript
+                            components={{ code }}
+                          ></VSCode_NpmInstallTypeScript>
+                        }
+                      ></Route>
+                      <Route
+                        path="generics/vscode/mdit"
+                        element={
+                          <VSCode_NpmMarkdownIt
+                            components={{ code }}
+                          ></VSCode_NpmMarkdownIt>
+                        }
+                      ></Route>
+                      <Route
+                        path="generics/vscode/gitadd"
+                        element={
+                          <VSCode_GitHubAddSourceControl
+                            components={{ code }}
+                          ></VSCode_GitHubAddSourceControl>
+                        }
+                      ></Route>
+                      //#endregion
+                      {/* new section */}
+                      //#region NavBar Generics Errors
+                      <Route
+                        path="generics/errors"
+                        element={
+                          <Errors_TOC components={{ code }}></Errors_TOC>
                         }
                       ></Route>
                       //#endregion
@@ -596,12 +744,12 @@ function App() {
                         path="/DebugInformationComponent"
                         element={<DebugInformationComponent />}
                       />
+                      //#endregion
                       <Route
                         path="/LongPressComponent"
                         element={<LongPressComponent />}
                       />
                     </Route>
-                    //#endregion
                   </Routes>
                 </Router>
               );

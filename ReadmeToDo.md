@@ -30,3 +30,4 @@
 - [ ] For NodeJS Tutorials, try to list the files of the exercises from their respective folders
 - [ ] For all Tutorials, add a floating button of back to top
 - [ ] Create an Options or Settings section => possibility to change the Code Blocks Themes
+- [ ] Review the icons of the NavBar and the SideBar

@@ -1,0 +1,272 @@
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import a from "../../src/Styles/MDXStyle.css";
+import { Link } from "react-router-dom";
+
+# **Introduction to React** <a id="introduction-to-react"></a><Link to="../tutorials/react">&#8678;</Link>
+
+- [The build process](#the-build-process)
+- [Components](#components)
+- [React Project Structure](#react-project-structure)
+- [Create the application host](#create-the-application-host)
+- [Create the entry point to the React application](#create-the-entry-point-to-the-react-application)
+- [Start the React Application](#start-the-react-application)
+- [Create a first component](#create-a-first-component)
+- [Create the component](#create-the-component)
+- [Using the core component](#using-the-core-component)
+- [Display dynamic data](#display-dynamic-data)
+- [Add Style](#add-style)
+
+---
+
+- **`React`** uses a special syntax known as **JavaScript XML (JSX)**. **`JSX`** allows you to integrate **both** **`HTML`** (or custom components you might create) and **`JavaScript`** into a **single** file or even single line of code.
+
+- By using **`JSX`**, you can rely on **`JavaScript`** syntax for **logic**. Visual Studio Code provides **IntelliSense** for `JSX files`, so it's a useful tool when you're working with React.
+
+- **`JSX`** relies on **Extensible Markup Language (XML)**. XML's syntax is similar to HTML. In many instances you might not notice a difference. However, XML places a couple of important restrictions on your syntax:
+
+  - All elements must be placed **inside one parent element**.
+  - All elements must be **closed**.
+
+## The build process <a id="the-build-process" />
+
+[&#9650;](#introduction-to-react)
+
+- Browsers **don't natively** support JSX. So `JavaScript` and `HTML` must be **generated from the JSX** files to be rendered by a browser. Several **`bundlers`** and other tools can perform the necessary tasks. These tools include `Webpack`, `Parcel`, and `Snowpack`. We'll use **`Snowpack`** because it doesn't require code or extra scripting.
+
+## Components <a id="components" />
+
+[&#9650;](#introduction-to-react)
+
+- **React development** is based on **`components`**. **`Components`** are **self-contained** units of both **display** and **work**. They can be reused in your application. Use them to logically break down your application into **smaller chunks** (or components).
+
+## React Project Structure <a id="react-project-structure" />
+
+[&#9650;](#introduction-to-react)
+
+Let's explore the folders and files in the starter project:
+
+- **`package.json`** contains the list of packages and scripts:
+  - **Packages**:
+    - **`React`** for React
+    - **`ReactDOM`** to mount our application inside the browser
+  - **Scripts**:
+    - **`start`** to run the development server from Snowpack:
+      - It **virtually builds** all `JavaScript` and `HTML` files.
+      - It **hosts** and **automatically restarts** the server as files are **changed**.
+    - **`build`** to generate **production files** for deployment
+- **`public`** contains all **static files**.
+- **`src`** contains all **React files**.
+- **`snowpack.config.js`** contains the core configuration for Snowpack.
+  - **`mount`** creates two virtual directories for our Snowpack server.
+    - **`public`** contains all **static files** (such as `HTML`, CSS``, and `images`). It's hosted as **`/`\*\*.
+    - **`src`** contains all `JSX files` and associated `React` files. It's hosted as **`dist`**.
+
+## Create the application host <a id="create-the-application-host" />
+
+[&#9650;](#introduction-to-react)
+
+Under the **`public`** Folder, create an `index.html` file with the following code:
+
+```xml
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Recipes</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="module" src="/dist/index.js"></script>
+</body>
+</html>
+```
+
+Notice two important lines in our HTML:
+
+- `<div id="app"></div>`: This line **creates** the HTML element that **hosts** our `React` application. We **call** this element by its **`ID`** to **render** our application.
+- `<script type="module" src="/dist/index.js"></script>`: This line loads the **JavaScript**.
+
+**`Note:`**
+
+- The name of the file we're importing is `index.js`. We **don't use** `index.jsx`, because browsers **can't render** `JSX` files. We always need a bundler (such as `Snowpack`) to generate `JavaScript`. We reference the `JavaScript` rather than the `JSX`.
+
+- The **`type="module"`** attribute allows us to use `import` statements in our `JavaScript` (or `JSX`) files. This functionality is relatively new to browsers. It helps us `import` the necessary `packages` and `components`.
+
+## Create the entry point to the React application <a id="create-the-entry-point-to-the-react-application" />
+
+[&#9650;](#introduction-to-react)
+
+Under the **`src`** Folder, create an `index.jsx` file with the following code:
+
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+
+ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById("app"));
+```
+
+Our **`index.jsx`** file starts by **importing** two important **libraries**:
+
+- The `first` library, **`React`**, allows us to use **`JSX`**. It will be **imported** in **every** `component` or `JSX` file we create.
+- The `second` library, **`ReactDOM`**, **renders** our application inside the `HTML`.
+
+**`render`** takes two parameters:
+
+- The `HTML` we want to display. **In this case**, the `HTML` is an **`h1`** heading
+- We'll use the `element` that has an **`ID`** of **`app`** to **display** our `HTML`.
+
+## Start the React Application <a id="start-the-react-application" />
+
+[&#9650;](#introduction-to-react)
+
+- open an Intergarted terminal and execute:
+
+```text
+npm start
+```
+
+- Your default browser should automatically **open** and **display** your page.
+
+- If the page doesn't appear automatically, open your browser and go to
+
+```text
+http://localhost:8080
+```
+
+- Our `JSX` code is converted into the appropriate `HTML` and `JavaScript` for display in the browser.
+- Open the **JavaScript** file generated by **`Snowpack`**:
+
+```text
+http://localhost:8080/dist/index.js
+```
+
+- You'll see the following code:
+
+```js
+import React from "../web_modules/react.js";
+import ReactDOM from "../web_modules/react-dom.js";
+ReactDOM.render(
+  /* @__PURE__ */ React.createElement("h1", null, "Hello, world!"),
+  document.getElementById("app")
+);
+```
+
+## Create a first component <a id="create-a-first-component" />
+
+[&#9650;](#introduction-to-react)
+
+- `React` development is based on **`components`**. These **self-contained** units are designed for **reuse** and **modularity**. `React` projects typically contain many components.
+
+- A **`component`** can be either a `function` or a `class`. Most React developers prefer to create **`components`** by using `functions`, so we'll focus on this style.
+
+Applications generally have one **`core component`**, commonly called an **`App`**. The **`App`** acts as the **root** of the application.
+
+## Create the component <a id="create-the-component" />
+
+[&#9650;](#introduction-to-react)
+
+Open Visual Studio Code. Create a new file in src. Name it **`App.jsx`** with the following code:
+
+```js
+import React from "react";
+
+function App() {
+  return (
+    <article>
+      <h1>Recipe Manager</h1>
+    </article>
+  );
+}
+
+export default App;
+```
+
+- We start the **App.jsx** file by importing `React` so we can use `JSX syntax`.
+- We then create a `function` named **`App`**, like we would create any other `function` in `JavaScript`.
+- Finally, we export the `function` by using the standard `JavaScript` syntax. The **core** of our **`component`** is contained in the **`return`** statement.
+- Notice that we're using `HTML` (technically `XML`) embedded in `JavaScript`. This functionality shows the power of `JSX`. We can use the logic and power of JavaScript to create **self-contained** units of work (`components`).
+- The `HTML` returned by the `function` (or `component`) is displayed on the page. The `heading` contains the text **Recipe Manager**.
+- The **`h1`** element nests inside an HTML 5 article element. Because `JSX` uses `XML`, we must have one **`root element`**. The **`article`** element is the **`root`** for this `component`. This structure allows us to add `HTML` and other `React` components as our application grows.
+
+## Using the core component <a id="using-the-core-component" />
+
+[&#9650;](#introduction-to-react)
+
+Let's update our application to use our new component in **`index.jsx`**
+
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+
+ReactDOM.render(<App />, document.getElementById("app"));
+```
+
+## Display dynamic data <a id="display-dynamic-data" />
+
+[&#9650;](#introduction-to-react)
+
+To display **dynamic data** inside a `component`, use the syntax **`{ }`**, sometimes called **`handlebars`**. This style of syntax is relatively common in `HTML` templating tools. Use these **`handlebars`** to effectively switch to `JavaScript` mode and run almost any valid `JavaScript`.
+
+For example, to display the **current time**, you could use the following code:
+
+```js
+<div>{Date.now()}</div>
+```
+
+In the previous example, we'll create a `component` for the **`title of a recipe`**. We'll use a `JavaScript` variable for the title to show how `React` can **display dynamic data**. Future units will show you how to work with more complex data.
+
+- Create a new file in the src folder. Name it **`RecipeTitle.jsx`**. Add the following code to **`RecipeTitle.jsx`**:
+
+```js
+import React from "react";
+
+function RecipeTitle() {
+  const title = "Mashed potatoes";
+  return <h2>{title}</h2>;
+}
+export default RecipeTitle;
+```
+
+Update the **`App.jsx`** as follows to include the Dynamic Component.
+
+```js
+import React from "react";
+import RecipeTitle from "./RecipeTitle";
+
+function App() {
+  return (
+    <article>
+      <h1>Recipe Manager</h1>
+      <RecipeTitle />
+    </article>
+  );
+}
+
+export default App;
+```
+
+## Add Style <a id="add-style" />
+
+[&#9650;](#introduction-to-react)
+
+Ass a new **`style.css`** file as follows:
+
+```css
+article {
+  margin-left: 10%;
+  margin-right: 10%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+}
+```
+
+Update the **`App.jsx`** to import the **`style.css`** as follows:
+
+```js
+import "./index.css";
+```
+
+<br />
+<br />
+<br />
