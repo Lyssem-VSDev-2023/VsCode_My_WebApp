@@ -1,41 +1,21 @@
-import React from "react";
-import * as AiIcons from "react-icons/ai";
-import * as RiIcons from "react-icons/ri";
-import * as PiIcons from "react-icons/pi";
-import * as TbIcons from "react-icons/tb";
-import * as BsIcons from "react-icons/bs";
-
-//Icons
-const downIcon = <RiIcons.RiArrowDownSFill />;
-const upIcon = <RiIcons.RiArrowUpSFill />;
-
-//NavBar SubIcons
-const jsIcon = <RiIcons.RiJavascriptLine className="mb-1 me-2" />;
-const tsIcon = <TbIcons.TbBrandTypescript className="mb-1 me-2" />;
-const csIcon = <TbIcons.TbBrandCSharp className="mb-1 me-2" />;
-const vscodeIcon = <TbIcons.TbBrandVscode className="mb-1 me-2" />;
-const bsIcon = <TbIcons.TbBrandBootstrap className="mb-1 me-2" />;
-const mdIcon = <BsIcons.BsMarkdown className="mb-1 me-2" />;
-const svgIcon = <BsIcons.BsFiletypeSvg className="mb-1 me-2" />;
+import { IconsList } from "../IconsList/IconsList";
 
 export const NavbarData = [
   {
     title: "Tutorials ",
-    path: "/tutorials",
-    icon: <PiIcons.PiBooksDuotone />,
-    iconClosed: downIcon,
-    iconOpened: upIcon,
+    path: "",
+    icon: IconsList.NavBar.tutorialsIcon,
     subNav: [
       {
         title: "NodeJS",
         path: "/tutorials/nodejs",
-        icon: jsIcon,
+        icon: IconsList.Tutorials.nodeJSIcon,
         divider: false,
       },
       {
         title: "Javascript",
         path: "/tutorials/javascript",
-        icon: jsIcon,
+        icon: IconsList.Tutorials.javaScriptIcon,
         divider: false,
       },
       // {
@@ -44,20 +24,26 @@ export const NavbarData = [
       {
         title: "TypeScript",
         path: "/tutorials/typescript",
-        icon: tsIcon,
+        icon: IconsList.Tutorials.typeScriptIcon,
         divider: false,
       },
       {
         title: "React",
         path: "/tutorials/react",
-        icon: tsIcon,
+        icon: IconsList.Tutorials.reactIcon,
         divider: false,
       },
 
       {
         title: "Markdown",
         path: "/tutorials/markdown",
-        icon: mdIcon,
+        icon: IconsList.Tutorials.markDownIcon,
+        divider: false,
+      },
+      {
+        title: "CSS",
+        path: "/tutorials/css",
+        icon: IconsList.Tutorials.cssIcon,
         divider: false,
       },
       {
@@ -66,70 +52,64 @@ export const NavbarData = [
       {
         title: "C-Sharp",
         path: "/overview/csharp",
-        icon: csIcon,
+        icon: IconsList.Tutorials.cSharpIcon,
         divider: false,
       },
     ],
   },
   {
     title: "Generics ",
-    path: "/generics",
-    icon: <PiIcons.PiBooksDuotone />,
-    iconClosed: downIcon,
-    iconOpened: upIcon,
+    path: "",
+    icon: IconsList.NavBar.genericsIcon,
     subNav: [
       {
         title: "Visual Studio Code",
         path: "/generics/vscode",
-        icon: vscodeIcon,
+        icon: IconsList.Generics.vsCodeIcon,
         divider: false,
       },
       {
         title: "Packages & Utilities",
         path: "/generics/utils",
-        icon: vscodeIcon,
+        icon: IconsList.Generics.packagesIcon,
         divider: false,
       },
       {
         title: "Faced Errors",
         path: "/generics/errors",
-        icon: vscodeIcon,
+        icon: IconsList.Generics.errorsIcon,
         divider: false,
       },
     ],
   },
   {
     title: "ToolKits ",
-    path: "/toolKits",
-    icon: <PiIcons.PiBooksDuotone />,
-    iconClosed: downIcon,
-    iconOpened: upIcon,
+    path: "",
+    icon: IconsList.NavBar.toolsIcon,
     subNav: [
       {
         title: "Bootstrap Templates",
         path: "/toolkits/bstemplates",
-        icon: bsIcon,
+        icon: IconsList.Tools.bootStrapIcon,
         divider: false,
       },
       {
         title: "Bootstrap Menu Examples",
         path: "/toolkits/bsmenuexamples",
-        icon: bsIcon,
+        icon: IconsList.Tools.bootStrapIcon,
         divider: false,
       },
     ],
   },
   {
-    title: "To Learn ",
-    path: "/tolearn",
-    icon: <PiIcons.PiBooksDuotone />,
-    iconClosed: downIcon,
-    iconOpened: upIcon,
+    title: "Learn/ToDo",
+    path: "/learn",
+    icon: IconsList.NavBar.learnIcon,
     subNav: [
       {
         title: "SVG",
         path: "/tolearn/svg",
-        icon: svgIcon,
+        icon: IconsList.Learn.svgIcon,
         divider: false,
       },
     ],
@@ -137,11 +117,6 @@ export const NavbarData = [
   {
     title: "About",
     path: "/about",
-    icon: <AiIcons.AiOutlineBook />,
-  },
-  {
-    title: "Test",
-    path: "/test",
-    icon: <AiIcons.AiOutlineBook />,
+    icon: IconsList.NavBar.aboutIcon,
   },
 ];

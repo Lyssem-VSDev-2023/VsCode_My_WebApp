@@ -1,0 +1,227 @@
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import "../../src/Styles/MDXStyle.css";
+import { Link } from "react-router-dom";
+
+# **CSS - Cascading Style Sheets** <a id="home" /><Link to="../tutorials/css">&#8678;</Link>
+
+- [Syntax](#a1)
+- [CSS Selectors](#a2)
+
+### How to use CSS <a id="a1" />
+
+[&#9650;](#home)
+
+Three Ways to Insert CSS
+
+**1. External CSS**
+
+```html
+<html>
+  <head>
+    <link rel="stylesheet" href="mystyle.css" />
+  </head>
+  <body>
+    <h1>This is a heading</h1>
+    <p>This is a paragraph.</p>
+  </body>
+</html>
+```
+
+```css
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: navy;
+  margin-left: 20px;
+}
+```
+
+**2. Internal CSS**
+
+```html
+<html>
+  <head>
+    <style>
+      body {
+        background-color: linen;
+      }
+
+      h1 {
+        color: maroon;
+        margin-left: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>This is a heading</h1>
+    <p>This is a paragraph.</p>
+  </body>
+</html>
+```
+
+**3. Inline CSS**
+
+```html
+<html>
+  <body>
+    <h1 style="color:blue;text-align:center;">This is a heading</h1>
+    <p style="color:red;">This is a paragraph.</p>
+  </body>
+</html>
+```
+
+### CSS Comments <a id="a2" />
+
+[&#9650;](#home)
+
+```css
+/* This is a single-line comment */
+p {
+  color: red;
+}
+
+p {
+  color: red; /* Set text color to red */
+}
+
+p {
+  color: /*red*/ blue;
+}
+
+/* This is
+a multi-line
+comment */
+p {
+  color: red;
+}
+```
+
+### CSS Selectors (Simple) <a id="a2" />
+
+[&#9650;](#home)
+
+```css
+p {
+  color: red;
+  text-align: center;
+}
+```
+
+- **`p`** is a selector in CSS (it points to the HTML element you want to style: **`<p>`**).
+- **`color`** is a property, and **`red`** is the property value
+- **`text-align`** is a property, and **`center`** is the property value
+
+The type of selectors are:
+
+- Simple selectors (select elements based on name, id, class)
+- Combinator selectors (select elements based on a specific relationship between them)
+- Pseudo-class selectors (select elements based on a certain state)
+- Pseudo-elements selectors (select and style a part of an element)
+- Attribute selectors (select elements based on an attribute or attribute value)
+
+export const t1 = `
+| Selector               | Example        | Example description                                     |
+| ---------------------- | -------------- | ------------------------------------------------------- |
+| \`#id\`                | \`#firstname\` | Selects the element with \`id="firstname"\`             |
+| \`.class\`             | \`.intro\`     | Selects all elements with \`class="intro"\`             |
+| \`element.class\`      | \`p.intro\`    | Selects only \`<p>\` elements with \`class="intro"\`    |
+| \*                     | \*             | Selects all elements                                    |
+| \`element\`            | \`p\`          | Selects all \`<p>\` elements                            |
+| \`element,element,..\` | \`div, p\`     | Selects all \`<div>\` elements and all \`<p>\` elements |
+`;
+
+<Markdown remarkPlugins={[remarkGfm]}>{t1}</Markdown>
+<br />
+
+### CSS element Selector <a id="a3" />
+
+[&#9650;](#home)
+
+All `<p>` elements on the page will be center-aligned, with a red text color:
+
+```css
+p {
+  text-align: center;
+  color: red;
+}
+```
+
+### CSS id Selector <a id="a4" />
+
+[&#9650;](#home)
+
+CSS rule below will be applied to the HTML element with `id="para1"`
+
+```css
+#para1 {
+  text-align: center;
+  color: red;
+}
+```
+
+### CSS class Selector <a id="a5" />
+
+[&#9650;](#home)
+
+All HTML elements with class="center" will be red and center-aligned
+
+```css
+.center {
+  text-align: center;
+  color: red;
+}
+```
+
+Only `<p>` elements with class="center" will be red and center-aligned
+
+```css
+p.center {
+  text-align: center;
+  color: red;
+}
+```
+
+### Referring to multiple Classes <a id="a6" />
+
+[&#9650;](#home)
+
+`<p>` element will be styled according to class="center" and to class="large"
+
+```html
+<p class="center large">This paragraph refers to two classes.</p>
+```
+
+### CSS Universal Selector <a id="a7" />
+
+[&#9650;](#home)
+
+CSS rule below will affect every HTML element on the page
+
+```css
+* {
+  text-align: center;
+  color: blue;
+}
+```
+
+### CSS Grouping Selector <a id="a8" />
+
+[&#9650;](#home)
+
+The grouping selector selects all the HTML elements with the same style definitions
+
+```css
+h1,
+h2,
+p {
+  text-align: center;
+  color: red;
+}
+```
+
+<br />
+<br />
+<br />

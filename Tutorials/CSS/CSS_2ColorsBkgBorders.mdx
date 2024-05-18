@@ -1,0 +1,220 @@
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import "../../src/Styles/MDXStyle.css";
+import { Link } from "react-router-dom";
+import HTMLer from "../../src/Utils/HTMLer";
+
+# **Colors + Background + Borders** <a id="home" /><Link to="../tutorials/css">&#8678;</Link>
+
+- [Colors](#a0)
+  - [RGB/RGBA Value](#a01)
+  - [Hex Value](#a02)
+  - [HSL/HSLA Value](#a03)
+- [Background](#b1)
+
+### Colors <a id="a0" />
+
+[&#9650;](#home)
+
+[Color Names (w3schools.com)](https://www.w3schools.com/colors/colors_names.asp)
+
+**CSS Background Color**
+
+```html
+<h1 style="background-color:DodgerBlue;">Hello World</h1>
+<p style="background-color:Tomato;">qs ipsum...</p>
+```
+
+export const a1 = `<h1 style="background-color:DodgerBlue;">Hello World</h1>
+<p style="background-color:Tomato;">qs ipsum...</p>`;
+
+<HTMLer html={a1} />
+
+**CSS Text Color**
+
+```html
+<h1 style="color:Tomato;">Hello World</h1>
+<p style="color:DodgerBlue;">sQS ipsum...</p>
+<p style="color:MediumSeaGreen;">Ut wisi enim...</p>
+```
+
+export const a2 = `<h1 style="color:Tomato;">Hello World</h1>
+<p style="color:DodgerBlue;">sQS ipsum...</p>
+<p style="color:MediumSeaGreen;">Ut wisi enim...</p>`;
+
+<HTMLer html={a2} />
+
+**CSS Border Color**
+
+```html
+<p style="border:2px solid Tomato;">Hello World</p>
+<p style="border:2px solid DodgerBlue;">Hello World</p>
+<p style="border:2px solid Violet;">Hello World</p>
+```
+
+export const a3 = `<P style="border:2px solid Tomato;">Hello World</p>
+<p style="border:2px solid DodgerBlue;">Hello World</p>
+<p style="border:2px solid Violet;">Hello World</p>`;
+
+<HTMLer html={a3} />
+
+### RGB/RGBA Value <a id="a01" />
+
+[&#9650;](#home)
+
+In CSS, a color can be specified as an RGB value, using this formula: `rgb(red, green, blue)`
+
+Each parameter (red, green, and blue) defines the intensity of the color between 0 and 255.
+
+```html
+rgb(255, 99, 71)
+```
+
+**RGB Example:**
+
+```html
+<p style="background-color:rgb(255, 99, 71);">rgb(255, 99, 71)</p>
+<p style="background-color:rgb(0, 0, 255);">rgb(0, 0, 255)</p>
+<p style="background-color:rgb(238, 130, 238);">rgb(238, 130, 238)</p>
+<p style="background-color:rgb(255, 165, 0);">rgb(255, 165, 0)</p>
+```
+
+export const a5 = `
+<p style="background-color:rgb(255, 99, 71);">rgb(255, 99, 71)</p>
+<p style="background-color:rgb(0, 0, 255);">rgb(0, 0, 255)</p>
+<p style="background-color:rgb(238, 130, 238);">rgb(238, 130, 238)</p>
+<p style="background-color:rgb(255, 165, 0);">rgb(255, 165, 0)</p>
+`;
+
+<HTMLer html={a5} />
+
+An RGBA color value is specified with: `rgba(red, green, blue, alpha)`
+
+The alpha parameter is a number between 0.0 (fully transparent) and 1.0 (not transparent at all)
+
+```html
+<p style="background-color:rgba(255, 99, 71, 0.2);">rgba(255, 99, 71, 0.2)</p>
+<p style="background-color:rgba(0, 0, 255, 0.6);">rgba(0, 0, 255, 0.6)</p>
+<p style="background-color:rgba(238, 130, 238, 0.8);">
+  rgba(238, 130, 238, 0.8)
+</p>
+<p style="background-color:rgba(255, 165, 0, 1.0);">rgba(255, 165, 0, 1.0)</p>
+```
+
+export const a6 = `
+<p style="background-color:rgba(255, 99, 71, 0.2);">rgba(255, 99, 71, 0.2)</p>
+<p style="background-color:rgba(0, 0, 255, 0.6);">rgba(0, 0, 255, 0.6)</p>
+<p style="background-color:rgba(238, 130, 238, 0.4);">rgba(238, 130, 238, 0.4)</p>
+<p style="background-color:rgba(255, 165, 0, 1.0);">rgba(255, 165, 0, 1.0)</p>
+`;
+
+<HTMLer html={a6} />
+
+### Hex Value <a id="a02" />
+
+[&#9650;](#home)
+
+A hexadecimal color is specified with: #RRGGBB, where the RR (red), GG (green) and BB (blue) hexadecimal integers specify the components of the color.
+
+To display black, set all values to 00, like this: #000000.
+
+To display white, set all values to ff, like this: #ffffff.
+
+```html
+<p style="background-color:#ff0000;">#ff0000</p>
+<p style="background-color:#0000ff;">#0000ff</p>
+<p style="background-color:#3cb371;">#3cb371</p>
+```
+
+export const a7 = `
+<p style="background-color:#ff0000;">#ff0000</p>
+<p style="background-color:#0000ff;">#0000ff</p>
+<p style="background-color:#3cb371;">#3cb371</p>
+`;
+
+<HTMLer html={a7} />
+
+The 3-digit hex code can only be used when both the values (RR, GG, and BB) are the same for each component.
+So, if we have #ff00cc, it can be written like this: #f0c.
+
+```css
+body {
+  background-color: #fc9; /* same as #ffcc99 */
+}
+h1 {
+  color: #f0f; /* same as #ff00ff */
+}
+p {
+  color: #b58; /* same as #bb5588 */
+}
+```
+
+### HSL/HSLA Value <a id="a03" />
+
+[&#9650;](#home)
+
+In CSS, a color can be specified using hue, saturation, and lightness (HSL) in the form: `hsl(hue, saturation, lightness)`
+
+```html
+hsl(195, 100%, 95%)
+```
+
+**RGB Example:**
+
+```html
+<p style="background-color:hsl(147, 50%, 47%);">hsl(147, 50%, 47%)</p>
+<p style="background-color:hsl(248, 53%, 58%);">hsl(248, 53%, 58%)</p>
+<p style="background-color:hsl(300, 76%, 72%);">hsl(300, 76%, 72%)</p>
+```
+
+export const a9 = `
+<p style="background-color:hsl(147, 50%, 47%);">hsl(147, 50%, 47%)</p>
+<p style="background-color:hsl(248, 53%, 58%);">hsl(248, 53%, 58%)</p>
+<p style="background-color:hsl(300, 76%, 72%);">hsl(300, 76%, 72%)</p>
+`;
+
+<HTMLer html={a9} />
+
+HSLA color values are an extension of HSL color values with an alpha channel - which specifies the opacity for a color.
+
+An HSLA color value is specified with: `hsla(hue, saturation, lightness, alpha)`
+
+```html
+<p style="background-color:hsla(9, 100%, 64%, 0.4);">hsla(9, 100%, 64%, 0.4)</p>
+<p style="background-color:hsla(9, 100%, 64%, 0.6);">hsla(9, 100%, 64%, 0.6)</p>
+```
+
+export const a10 = `
+<p style="background-color:hsla(9, 100%, 64%, 0.4);">hsla(9, 100%, 64%, 0.4)</p>
+<p style="background-color:hsla(9, 100%, 64%, 0.6);">hsla(9, 100%, 64%, 0.6)</p>
+`;
+
+<HTMLer html={a10} />
+
+### Background <a id="b1" />
+
+[&#9650;](#home)
+
+**background-color**
+
+```html
+<p style="background-color: lightblue">
+  This page has a light blue background color!
+</p>
+<p style="background-color: green; opacity: 0.3">
+  This page has a light blue background color!
+</p>
+```
+
+export const b1 = `
+<p style="background-color: lightblue">This page has a light blue background color!</p>
+<p style="background-color: green, opacity:0.3">
+  This page has a light blue background color!
+</p>
+`;
+
+<HTMLer html={b1} />
+
+<br />
+<br />
+<br />

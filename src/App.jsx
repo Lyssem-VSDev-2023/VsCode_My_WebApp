@@ -9,7 +9,8 @@ import Index from "./Pages/Index";
 
 //#region NavBar - Pages
 import About from "./Pages/About";
-import Test from "./Pages/Test";
+import Learn from "./Pages/Learn";
+
 //#endregion
 
 //#region NavBar - Tutorials Javascript
@@ -63,6 +64,13 @@ import React_5CreateAReactTypeScriptApp from "../Tutorials/React/React_5CreateAR
 import Markdown_TOC from "../Tutorials/MarkDown/ReadMe.mdx";
 import Markdown_Tuto from "../Tutorials/MarkDown/MarkDown.mdx";
 import Markdown_MDX from "../Tutorials/MarkDown/MDX.mdx";
+//#endregion
+
+//#region NavBar - Tutorials CSS
+import CSS_TOC from "../Tutorials/CSS/Readme.mdx";
+import CSS_1Basics from "../Tutorials/CSS/CSS_1Basics.mdx";
+import CSS_2ColorsBkgBorders from "../Tutorials/CSS/CSS_2ColorsBkgBorders.mdx";
+
 //#endregion
 
 //#region NavBar - Generics VSCode
@@ -175,9 +183,9 @@ function App() {
                     <Route path="/" element={<LayoutV2 />}>
                       <Route index element={<Index />} />
                       {/* ++ NavBar **************** */}
-                      //#region NavBar Main
-                      <Route path="/about" element={<About></About>}></Route>
-                      <Route path="/test" element={<Test></Test>}></Route>
+                      //#region NavBar Main //
+                      <Route path="/learn" element={<Learn />}></Route>
+                      <Route path="/about" element={<About />}></Route>
                       <Route path="/tutorials/*"></Route>
                       //#endregion
                       {/* new section */}
@@ -457,7 +465,7 @@ function App() {
                       {/* new section */}
                       //#region NavBar Tutorials Markdown
                       <Route
-                        path="/generics/markdown/*"
+                        path="/tutorials/markdown/*"
                         element={<Markdown_TOC></Markdown_TOC>}
                       ></Route>
                       <Route
@@ -470,6 +478,27 @@ function App() {
                         path="tutorials/markdown/mdx"
                         element={
                           <Markdown_MDX components={{ code }}></Markdown_MDX>
+                        }
+                      ></Route>
+                      //#endregion
+                      {/* new section */}
+                      //#region NavBar Tutorials CSS
+                      <Route
+                        path="/tutorials/css/*"
+                        element={<CSS_TOC></CSS_TOC>}
+                      ></Route>
+                      <Route
+                        path="tutorials/css/CSS_1Basics"
+                        element={
+                          <CSS_1Basics components={{ code }}></CSS_1Basics>
+                        }
+                      ></Route>
+                      <Route
+                        path="tutorials/css/CSS_2ColorsBkgBorders"
+                        element={
+                          <CSS_2ColorsBkgBorders
+                            components={{ code }}
+                          ></CSS_2ColorsBkgBorders>
                         }
                       ></Route>
                       //#endregion

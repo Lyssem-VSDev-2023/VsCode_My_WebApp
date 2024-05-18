@@ -1,39 +1,29 @@
-import React from "react";
-import * as AiIcons from "react-icons/ai";
-import * as RiIcons from "react-icons/ri";
-
-//Icons
-const downIcon = <RiIcons.RiArrowDownSFill />;
-const upIcon = <RiIcons.RiArrowUpSFill />;
+import { IconsList } from "../IconsList/IconsList";
 
 export const SidebarData = [
   {
     title: "React",
     path: "#",
-    techs: "",
-    icon: <AiIcons.AiFillHome />,
-    iconClosed: downIcon,
-    iconOpened: upIcon,
+    icon: IconsList.SideBar.reactIcon,
+    iconClosed: IconsList.SideBar.downIcon,
+    iconOpened: IconsList.SideBar.upIcon,
     subNav: [
       {
-        title: "React Dev",
+        title: "React Dev Examples",
         path: "/reactdev",
-        techs: ["js", "jsx"],
-        icon: <AiIcons.AiFillHome />,
+        icon: IconsList.SideBar.homeIcon,
         divider: false,
       },
       {
-        title: "React Router - Tutorial",
+        title: "React Router DOM",
         path: "/?self=reactrouterapp",
-        techs: ["js", "jsx"],
-        icon: <AiIcons.AiFillHome />,
+        icon: IconsList.SideBar.homeIcon,
         divider: false,
       },
       {
         title: "React Router - Examples",
         path: "/reactrouterexamples",
-        techs: ["js", "jsx"],
-        icon: <AiIcons.AiFillHome />,
+        icon: IconsList.SideBar.homeIcon,
         divider: false,
       },
     ],
@@ -41,30 +31,26 @@ export const SidebarData = [
   {
     title: "Web Dev Simplified",
     path: "#",
-    techs: "",
-    icon: <AiIcons.AiFillHome />,
-    iconClosed: downIcon,
-    iconOpened: upIcon,
+    icon: IconsList.SideBar.homeIcon,
+    iconClosed: IconsList.SideBar.downIcon,
+    iconOpened: IconsList.SideBar.upIcon,
     subNav: [
       {
         title: "Budget App",
         path: "/budgetapp",
-        techs: ["js", "jsx"],
-        icon: <AiIcons.AiFillHome />,
+        icon: IconsList.SideBar.homeIcon,
         divider: false,
       },
       {
         title: "React Hooks",
         path: "/reacthooks",
-        techs: ["js", "jsx"],
-        icon: <AiIcons.AiFillHome />,
+        icon: IconsList.SideBar.homeIcon,
         divider: false,
       },
       {
         title: "ReactQuery (TanStack)",
         path: "/tanstack",
-        techs: ["js", "jsx"],
-        icon: <AiIcons.AiFillHome />,
+        icon: IconsList.SideBar.homeIcon,
         divider: false,
       },
     ],

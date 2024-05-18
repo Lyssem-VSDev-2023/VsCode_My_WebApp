@@ -2,7 +2,7 @@ table,
 tr,
 td,
 th {
-  border: 1px solid #555;
+  border: 1px solid #555 !important;
   padding: 5px 5px 5px 5px;
   margin: 2px 2px 2px 2px;
 }

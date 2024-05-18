@@ -10,6 +10,10 @@ import { useNavigate } from "react-router-dom";
 function NavBarMenu() {
   const navigate = useNavigate();
 
+  function doNavigate(path) {
+    path != "" ? navigate(path) : setTimeout(() => {}, 1);
+  }
+
   return (
     <Navbar bg="dark" data-bs-theme="dark">
       <Container fluid>
@@ -25,17 +29,22 @@ function NavBarMenu() {
             {NavbarData.map((item, index) => {
               return !item.subNav ? (
                 <Nav.Link key={index} onClick={() => navigate(item.path)}>
-                  {item.title}
+                  {item.icon} {item.title}
                 </Nav.Link>
               ) : (
                 <NavDropdown
+                  onClick={() => doNavigate(item.path)}
                   key={index}
-                  title={item.title}
-                  id="navbarScrollingDropdown"
+                  title={
+                    <>
+                      {item.icon}
+                      {item.title}
+                    </>
+                  }
                 >
                   {item.subNav.map((subItem, subIndex) => {
                     return subItem.divider ? (
-                      <NavDropdown.Divider />
+                      <NavDropdown.Divider key={subIndex} />
                     ) : (
                       <NavDropdown.Item
                         key={subIndex}
